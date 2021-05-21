@@ -16,8 +16,9 @@ export const fetchCategories = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        'https://www.themealdb.com/api/json/v1/1/categories.php',
+        'https://games-list-api.herokuapp.com/games',
       );
+      console.log(response);
       return response.data.categories;
     } catch (error) {
       console.log(error);
