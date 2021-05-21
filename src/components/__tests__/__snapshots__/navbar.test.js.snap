@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar component tests Matches snapshot 1`] = `
+<nav
+  className="col-12 navbar d-flex justify-content-center"
+  data-testid="navbar"
+>
+  <a
+    href="/home"
+    onClick={[Function]}
+  >
+    flavourbomb
+  </a>
+</nav>
+`;

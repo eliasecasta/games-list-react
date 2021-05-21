@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Meal component tests Matches snapshot 1`] = `
+<a
+  href="/recipe"
+  onClick={[Function]}
+>
+  <div
+    className="img-meal-container"
+    data-testid="meal"
+    style={
+      Object {
+        "backgroundImage": "url(https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/04/pizzapepperoni0.jpg)",
+      }
+    }
+  >
+    <h5
+      className="transparent-banner pl-3 py-2"
+    >
+      Shrimp Pizza
+    </h5>
+  </div>
+</a>
+`;

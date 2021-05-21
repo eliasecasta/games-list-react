@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+:root {
+  --main-titles-font: 'Itim', cursive;
+  --main-golden-color: rgb(255, 237, 136);
+
+  background-color: black;
+}
+
+.home {
+  background-color: black;
+}
+
+.filter-list {
+  background-color: black;
+  color: white;
+}
+
+pre {
+  white-space: pre-wrap; /* Since CSS 2.1 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+iframe {
+  width: 100vw;
+  height: auto;
+  border: none;
+  padding-top: 4%;
+}
+
+.youtube-vid-container {
+  background-color: black;
+}
+
+.meal-content {
+  background-color: black;
+  color: white;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 2.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar a {
+  color: var(--main-golden-color);
+  font-family: var(--main-titles-font);
+  font-size: 1.8em;
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-left: 40vw;
+  margin-top: 60vw;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: black;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  /* stylelint-disable-next-line csstree/validator */
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  /* stylelint-disable-next-line csstree/validator */
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+.transparent-banner {
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  position: absolute;
+  margin-top: 25.5vh;
+  width: 100%;
+}
+
+.img-category-container,
+.img-meal-container {
+  height: 30vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: lightgrey;
+  background-position: center;
+}
+
+.img-category-container h5,
+.img-meal-container h5 {
+  font-family: var(--main-titles-font);
+  font-size: 1.3em;
+}
+
+@media only screen and (min-width: 768px) {
+  .transparent-banner {
+    margin-top: 30.5vh;
+  }
+
+  .img-category-container {
+    height: 35vh;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .img-meal-container {
+    height: 35vh;
+    background-position: center;
+  }
+
+  iframe {
+    height: 40vh;
+  }
+}
