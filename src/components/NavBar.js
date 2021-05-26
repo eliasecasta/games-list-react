@@ -20,7 +20,7 @@ const NavBar = () => (
       </a>
     </Menu>
     <Link to="/home">Games List</Link>
-    <h5>Guest</h5>
+    <h5 className="navbar-username">Guest</h5>
   </nav>
 );
 
