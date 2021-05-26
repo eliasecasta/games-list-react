@@ -9,7 +9,7 @@
 
 .home,
 .recipes,
-.meals {
+.meals, .login {
   background-color: black;
 }
 
