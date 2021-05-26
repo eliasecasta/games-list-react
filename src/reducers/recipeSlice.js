@@ -18,8 +18,8 @@ export const fetchCategories = createAsyncThunk(
       const response = await axios.get(
         'https://games-list-api.herokuapp.com/games',
       );
-      console.log(response);
-      return response.data.categories;
+      console.log(response.data);
+      return response.data;
     } catch (error) {
       console.log(error);
     }
