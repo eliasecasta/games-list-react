@@ -3,7 +3,7 @@ import RecipeList from '../containers/RecipeList';
 
 function Recipes() {
   return (
-    <div>
+    <div className="recipes">
       <RecipeList />
     </div>
   );

@@ -1,20 +1,13 @@
 /* eslint-disable max-len, operator-linebreak, object-curly-newline, react/forbid-prop-types, jsx-a11y/anchor-is-valid */
 import { PropTypes } from 'prop-types';
 
-const Recipe = ({
-  recipe: { strMeal, strMealThumb, strInstructions, strYoutube },
-}) => {
-  const youtubeVid = strYoutube.replace('watch?v=', 'embed/');
-  let vidContainer;
+const Recipe = ({ recipe: { name, image, price, description } }) => {
+  let freePrice;
 
-  if (youtubeVid !== '') {
-    vidContainer = (
-      <div className="youtube-vid-container">
-        <iframe title="recipe video" className="youtube-vid" src={youtubeVid} />
-      </div>
-    );
+  if (price === 0) {
+    freePrice = 'Free!';
   } else {
-    vidContainer = '';
+    freePrice = `$ ${price}`;
   }
 
   return (
@@ -23,13 +16,13 @@ const Recipe = ({
         data-testid="recipe"
         className="img-meal-container"
         style={{
-          backgroundImage: `url(${strMealThumb})`,
+          backgroundImage: `url(${image})`,
         }}
       >
-        <h5 className="transparent-banner pl-3 py-2">{strMeal}</h5>
+        <h5 className="transparent-banner py-2">{name}</h5>
+        <h5 className="transparent-game-banner text-right py-2">{freePrice}</h5>
       </div>
-      <pre className="meal-content">{strInstructions}</pre>
-      {vidContainer}
+      <pre className="meal-content">{description}</pre>
     </>
   );
 };

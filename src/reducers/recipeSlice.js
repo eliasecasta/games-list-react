@@ -67,6 +67,8 @@ export const foodSlice = createSlice({
     },
     recipeFilter: (state, action) => {
       state.recipe = action.payload;
+      state.value = state.value.filter((game) => game.name === state.recipe);
+      state.status = 'recipe';
     },
     changeFilter: (state, action) => {
       state.filter = action.payload;

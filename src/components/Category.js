@@ -2,7 +2,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { mealFilter } from '../reducers/recipeSlice';
+import { recipeFilter } from '../reducers/recipeSlice';
 
 const Category = ({ category: { name, image, price } }) => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Category = ({ category: { name, image, price } }) => {
   }
 
   return (
-    <Link to="/meals" onClick={() => dispatch(mealFilter(name))}>
+    <Link to="/recipe" onClick={() => dispatch(recipeFilter(name))}>
       <div
         data-testid="category"
         className="img-category-container"
