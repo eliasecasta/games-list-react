@@ -23,10 +23,8 @@ const Category = ({ category: { name, image, price } }) => {
           backgroundImage: `url(${image})`,
         }}
       >
-        <h5 className="transparent-banner pl-3 py-2">{name}</h5>
-        <h5 className="transparent-game-banner text-right px-3 py-2">
-          {freePrice}
-        </h5>
+        <h5 className="transparent-banner py-2">{name}</h5>
+        <h5 className="transparent-game-banner text-right py-2">{freePrice}</h5>
       </div>
     </Link>
   );
