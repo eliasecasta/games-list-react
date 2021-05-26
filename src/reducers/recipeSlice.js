@@ -1,3 +1,5 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable operator-linebreak */
 /* eslint-disable max-len, no-param-reassign, consistent-return, no-console, implicit-arrow-linebreak */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -72,6 +74,7 @@ export const foodSlice = createSlice({
     },
     changeUserName: (state, action) => {
       state.userName = action.payload;
+      console.log(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -137,7 +140,8 @@ export const foodSlice = createSlice({
   },
 });
 
-export const { mealFilter, recipeFilter, changeFilter } = foodSlice.actions;
+export const { mealFilter, recipeFilter, changeFilter, changeUserName } =
+  foodSlice.actions;
 
 export const selectAllRecipes = (state) => state.recipe.value;
 export const selectAllFavourites = (state) => state.recipe.favourites;
