@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
 :root {
-  --main-titles-font: 'Itim', cursive;
-  --main-golden-color: rgb(255, 237, 136);
+  --main-titles-font: 'Architects Daughter', cursive;
+  --main-titles-color: rgb(255, 0, 0);
 
   background-color: black;
 }
@@ -56,7 +56,7 @@ a:hover {
 }
 
 .navbar a {
-  color: var(--main-golden-color);
+  color: var(--main-titles-color);
   font-family: var(--main-titles-font);
   font-size: 1.8em;
 }
