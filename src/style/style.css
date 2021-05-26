@@ -118,6 +118,15 @@ a:hover {
   width: 100%;
 }
 
+.transparent-game-banner {
+  /* background-color: black;
+  opacity: 0.8; */
+  color: white;
+  position: absolute;
+  margin-top: 25.5vh;
+  width: 100%;
+}
+
 .img-category-container,
 .img-meal-container {
   height: 30vh;

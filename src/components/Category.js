@@ -4,19 +4,29 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { mealFilter } from '../reducers/recipeSlice';
 
-const Category = ({ category: { strCategory, strCategoryThumb } }) => {
+const Category = ({ category: { name, image, price } }) => {
   const dispatch = useDispatch();
+  let freePrice = price;
+
+  if (price === 0) {
+    freePrice = 'Free!';
+  } else {
+    freePrice = `$ ${freePrice}`;
+  }
 
   return (
-    <Link to="/meals" onClick={() => dispatch(mealFilter(strCategory))}>
+    <Link to="/meals" onClick={() => dispatch(mealFilter(name))}>
       <div
         data-testid="category"
         className="img-category-container"
         style={{
-          backgroundImage: `url(${strCategoryThumb})`,
+          backgroundImage: `url(${image})`,
         }}
       >
-        <h5 className="transparent-banner pl-3 py-2">{strCategory}</h5>
+        <h5 className="transparent-banner pl-3 py-2">{name}</h5>
+        <h5 className="transparent-game-banner text-right px-3 py-2">
+          {freePrice}
+        </h5>
       </div>
     </Link>
   );
