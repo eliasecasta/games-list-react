@@ -3,7 +3,7 @@ import MealList from '../containers/MealList';
 
 function Meals() {
   return (
-    <div>
+    <div className="meals">
       <MealList />
     </div>
   );

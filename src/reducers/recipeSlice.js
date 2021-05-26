@@ -127,6 +127,7 @@ export const foodSlice = createSlice({
 export const { mealFilter, recipeFilter, changeFilter } = foodSlice.actions;
 
 export const selectAllRecipes = (state) => state.recipe.value;
+export const selectAllFavourites = (state) => state.recipe.favourites;
 export const selectRecipeById = (state, recipeId) =>
   state.recipe.value.find((recipe) => recipe.id === recipeId);
 

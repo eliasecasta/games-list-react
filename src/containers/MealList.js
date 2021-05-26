@@ -1,11 +1,19 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Meal from '../components/Meal';
-import { selectAllRecipes, fetchMeals } from '../reducers/recipeSlice';
+import {
+  selectAllRecipes,
+  selectAllFavourites,
+  fetchMeals,
+} from '../reducers/recipeSlice';
 
 const MealList = () => {
   const dispatch = useDispatch();
-  const meals = useSelector(selectAllRecipes);
+  let meals = useSelector(selectAllRecipes);
+  const favourites = useSelector(selectAllFavourites);
+
   const { status, error } = useSelector((state) => state.recipe);
 
   useEffect(() => {
@@ -25,7 +33,10 @@ const MealList = () => {
       </div>
     );
   } else if (status === 'meals') {
-    content = meals.map((meal) => <Meal key={meal.idMeal} meal={meal} />);
+    meals = meals.filter((game) =>
+      favourites.some((favourite) => game.id === favourite.game_id),
+    );
+    content = meals.map((meal) => <Meal key={meal.id} meal={meal} />);
   } else if (status === 'failed') {
     content = <div>{error}</div>;
   }

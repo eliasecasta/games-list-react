@@ -4,19 +4,27 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { recipeFilter } from '../reducers/recipeSlice';
 
-const Meal = ({ meal: { idMeal, strMeal, strMealThumb } }) => {
+const Meal = ({ meal: { name, image, price } }) => {
   const dispatch = useDispatch();
+  let freePrice = price;
+
+  if (price === 0) {
+    freePrice = 'Free!';
+  } else {
+    freePrice = `$ ${freePrice}`;
+  }
 
   return (
-    <Link to="/recipe" onClick={() => dispatch(recipeFilter(idMeal))}>
+    <Link to="/recipe" onClick={() => dispatch(recipeFilter(name))}>
       <div
         data-testid="meal"
         className="img-meal-container"
         style={{
-          backgroundImage: `url(${strMealThumb})`,
+          backgroundImage: `url(${image})`,
         }}
       >
-        <h5 className="transparent-banner pl-3 py-2">{strMeal}</h5>
+        <h5 className="transparent-banner py-2">{name}</h5>
+        <h5 className="transparent-game-banner text-right py-2">{freePrice}</h5>
       </div>
     </Link>
   );
