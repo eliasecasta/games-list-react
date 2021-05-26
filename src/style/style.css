@@ -9,7 +9,8 @@
 
 .home,
 .recipes,
-.meals, .login {
+.meals,
+.login {
   background-color: black;
 }
 
@@ -85,6 +86,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .navbar-username {
+  color: white;
+}
+
+.username-form {
+  background: black;
   color: white;
 }
 

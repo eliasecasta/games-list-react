@@ -6,7 +6,6 @@ import { slide as Menu } from 'react-burger-menu';
 
 const NavBar = () => {
   const { userName } = useSelector((state) => state.recipe);
-  console.log(userName);
   return (
     <nav
       data-testid="navbar"

@@ -74,7 +74,6 @@ export const foodSlice = createSlice({
     },
     changeUserName: (state, action) => {
       state.userName = action.payload;
-      console.log(action.payload);
     },
   },
   extraReducers: (builder) => {
