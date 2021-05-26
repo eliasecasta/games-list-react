@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const initialState = {
   value: [],
+  favourites: [],
   status: 'idle',
   error: null,
   meal: null,
@@ -26,21 +27,16 @@ export const fetchCategories = createAsyncThunk(
   },
 );
 
-export const fetchMeals = createAsyncThunk(
-  'recipes/fetchMeals',
-  async (arg, { getState }) => {
-    const state = getState();
-
-    try {
-      const response = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${state.recipe.meal}`,
-      );
-      return response.data.meals;
-    } catch (error) {
-      console.log(error);
-    }
-  },
-);
+export const fetchMeals = createAsyncThunk('recipes/fetchMeals', async () => {
+  try {
+    const response = await axios.get(
+      'https://games-list-api.herokuapp.com/favourites',
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 export const fetchRecipes = createAsyncThunk(
   'recipes/fetchRecipes',
@@ -95,11 +91,13 @@ export const foodSlice = createSlice({
         status: 'loading',
         value: state.value,
         meal: state.meal,
+        favourites: state.favourites,
         filter: 'All',
       }))
       .addCase(fetchMeals.fulfilled, (state, action) => ({
         status: 'meals',
-        value: action.payload,
+        value: state.value,
+        favourites: action.payload,
         meal: state.meal,
         filter: 'All',
       }))
