@@ -38,7 +38,7 @@ const CategoryList = () => {
       </div>
     );
   } else if (status === 'categories') {
-    filteredCategories = recipeCategories.map((recipe) => recipe.strCategory);
+    filteredCategories = recipeCategories.map((recipe) => recipe.name);
     filtered = (
       <CategoryFilter
         filteredCategories={filteredCategories}
@@ -48,14 +48,14 @@ const CategoryList = () => {
 
     if (filter === 'All') {
       content = recipeCategories.map((category) => (
-        <Category key={category.idCategory} category={category} />
+        <Category key={category.id} category={category} />
       ));
     } else {
       filteredContent = recipeCategories.filter(
-        (category) => category.strCategory === filter,
+        (category) => category.name === filter,
       );
       content = filteredContent.map((category) => (
-        <Category key={category.idCategory} category={category} />
+        <Category key={category.id} category={category} />
       ));
     }
   } else {
