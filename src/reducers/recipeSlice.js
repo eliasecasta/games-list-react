@@ -10,6 +10,7 @@ const initialState = {
   meal: null,
   recipe: null,
   filter: 'All',
+  userName: 'Guest',
 };
 
 export const fetchCategories = createAsyncThunk(
@@ -69,6 +70,9 @@ export const foodSlice = createSlice({
     changeFilter: (state, action) => {
       state.filter = action.payload;
     },
+    changeUserName: (state, action) => {
+      state.userName = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -77,15 +81,18 @@ export const foodSlice = createSlice({
         value: state.value,
         meal: state.meal,
         filter: state.filter,
+        userName: state.userName,
       }))
       .addCase(fetchCategories.fulfilled, (state, action) => ({
         status: 'categories',
         value: action.payload,
         filter: state.filter,
+        userName: state.userName,
       }))
       .addCase(fetchCategories.rejected, (state, action) => ({
         status: 'failed',
         error: action.error.message,
+        userName: state.userName,
       }))
       .addCase(fetchMeals.pending, (state) => ({
         status: 'loading',
@@ -93,6 +100,7 @@ export const foodSlice = createSlice({
         meal: state.meal,
         favourites: state.favourites,
         filter: 'All',
+        userName: state.userName,
       }))
       .addCase(fetchMeals.fulfilled, (state, action) => ({
         status: 'meals',
@@ -100,26 +108,31 @@ export const foodSlice = createSlice({
         favourites: action.payload,
         meal: state.meal,
         filter: 'All',
+        userName: state.userName,
       }))
       .addCase(fetchMeals.rejected, (state, action) => ({
         status: 'failed',
         error: action.error.message,
+        userName: state.userName,
       }))
       .addCase(fetchRecipes.pending, (state) => ({
         status: 'loading',
         value: state.value,
         recipe: state.recipe,
         filter: 'All',
+        userName: state.userName,
       }))
       .addCase(fetchRecipes.fulfilled, (state, action) => ({
         status: 'recipe',
         value: action.payload,
         recipe: state.recipe,
         filter: 'All',
+        userName: state.userName,
       }))
       .addCase(fetchRecipes.rejected, (state, action) => ({
         status: 'failed',
         error: action.error.message,
+        userName: state.userName,
       }));
   },
 });
