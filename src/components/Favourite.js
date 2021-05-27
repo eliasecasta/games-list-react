@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { gameFilter } from '../reducers/gameSlice';
 
-const Favourite = ({ meal: { name, image, price } }) => {
+const Favourite = ({ game: { name, image, price } }) => {
   const dispatch = useDispatch();
   let freePrice = price;
 
@@ -31,7 +31,7 @@ const Favourite = ({ meal: { name, image, price } }) => {
 };
 
 Favourite.propTypes = {
-  meal: PropTypes.object.isRequired,
+  game: PropTypes.object.isRequired,
 };
 
 export default Favourite;

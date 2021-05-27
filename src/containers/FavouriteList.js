@@ -11,7 +11,7 @@ import {
 
 const FavouriteList = () => {
   const dispatch = useDispatch();
-  let meals = useSelector(selectAllGames);
+  let games = useSelector(selectAllGames);
   const favourites = useSelector(selectAllFavourites);
 
   const { status, error } = useSelector((state) => state.game);
@@ -33,10 +33,10 @@ const FavouriteList = () => {
       </div>
     );
   } else if (status === 'favourites') {
-    meals = meals.filter((game) =>
+    games = games.filter((game) =>
       favourites.some((favourite) => game.id === favourite.game_id),
     );
-    content = meals.map((meal) => <Favourite key={meal.id} meal={meal} />);
+    content = games.map((game) => <Favourite key={game.id} game={game} />);
   } else if (status === 'failed') {
     content = <div>{error}</div>;
   }
