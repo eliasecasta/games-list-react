@@ -9,30 +9,16 @@ const initialState = {
   favourites: [],
   status: 'idle',
   error: null,
-  meal: null,
-  recipe: null,
+  favourite: null,
+  game: null,
   filter: 'All',
   userName: 'Guest',
 };
 
-export const fetchCategories = createAsyncThunk(
-  'recipes/fetchCategories',
-  async () => {
-    try {
-      const response = await axios.get(
-        'https://games-list-api.herokuapp.com/games',
-      );
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-  },
-);
-
-export const fetchMeals = createAsyncThunk('recipes/fetchMeals', async () => {
+export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
   try {
     const response = await axios.get(
-      'https://games-list-api.herokuapp.com/favourites',
+      'https://games-list-api.herokuapp.com/games',
     );
     return response.data;
   } catch (error) {
@@ -40,16 +26,14 @@ export const fetchMeals = createAsyncThunk('recipes/fetchMeals', async () => {
   }
 });
 
-export const fetchRecipes = createAsyncThunk(
-  'recipes/fetchRecipes',
-  async (arg, { getState }) => {
-    const state = getState();
-
+export const fetchFavourites = createAsyncThunk(
+  'games/fetchFavourites',
+  async () => {
     try {
       const response = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${state.game.recipe}`,
+        'https://games-list-api.herokuapp.com/favourites',
       );
-      return response.data.meals;
+      return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -60,12 +44,12 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    mealFilter: (state, action) => {
-      state.meal = action.payload;
+    favouriteFilter: (state, action) => {
+      state.favourite = action.payload;
     },
-    recipeFilter: (state, action) => {
-      state.recipe = action.payload;
-      state.value = state.value.filter((game) => game.name === state.recipe);
+    gameFilter: (state, action) => {
+      state.game = action.payload;
+      state.value = state.value.filter((game) => game.name === state.game);
       state.status = 'recipe';
     },
     changeFilter: (state, action) => {
@@ -77,60 +61,41 @@ export const gameSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCategories.pending, (state) => ({
+      .addCase(fetchGames.pending, (state) => ({
         status: 'loading',
         value: state.value,
-        meal: state.meal,
+        favourite: state.favourite,
         filter: state.filter,
         userName: state.userName,
       }))
-      .addCase(fetchCategories.fulfilled, (state, action) => ({
+      .addCase(fetchGames.fulfilled, (state, action) => ({
         status: 'categories',
         value: action.payload,
         filter: state.filter,
         userName: state.userName,
       }))
-      .addCase(fetchCategories.rejected, (state, action) => ({
+      .addCase(fetchGames.rejected, (state, action) => ({
         status: 'failed',
         error: action.error.message,
         userName: state.userName,
       }))
-      .addCase(fetchMeals.pending, (state) => ({
+      .addCase(fetchFavourites.pending, (state) => ({
         status: 'loading',
         value: state.value,
-        meal: state.meal,
+        favourite: state.favourite,
         favourites: state.favourites,
         filter: 'All',
         userName: state.userName,
       }))
-      .addCase(fetchMeals.fulfilled, (state, action) => ({
+      .addCase(fetchFavourites.fulfilled, (state, action) => ({
         status: 'meals',
         value: state.value,
         favourites: action.payload,
-        meal: state.meal,
+        favourite: state.favourite,
         filter: 'All',
         userName: state.userName,
       }))
-      .addCase(fetchMeals.rejected, (state, action) => ({
-        status: 'failed',
-        error: action.error.message,
-        userName: state.userName,
-      }))
-      .addCase(fetchRecipes.pending, (state) => ({
-        status: 'loading',
-        value: state.value,
-        recipe: state.recipe,
-        filter: 'All',
-        userName: state.userName,
-      }))
-      .addCase(fetchRecipes.fulfilled, (state, action) => ({
-        status: 'recipe',
-        value: action.payload,
-        recipe: state.recipe,
-        filter: 'All',
-        userName: state.userName,
-      }))
-      .addCase(fetchRecipes.rejected, (state, action) => ({
+      .addCase(fetchFavourites.rejected, (state, action) => ({
         status: 'failed',
         error: action.error.message,
         userName: state.userName,
@@ -138,7 +103,7 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { mealFilter, recipeFilter, changeFilter, changeUserName } =
+export const { favouriteFilter, gameFilter, changeFilter, changeUserName } =
   gameSlice.actions;
 
 export const selectAllRecipes = (state) => state.game.value;

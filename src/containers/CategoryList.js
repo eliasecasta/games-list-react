@@ -4,7 +4,7 @@ import Category from '../components/Category';
 import CategoryFilter from '../components/CategoryFilter';
 import {
   selectAllRecipes,
-  fetchCategories,
+  fetchGames,
   changeFilter,
 } from '../reducers/recipeSlice';
 
@@ -15,7 +15,7 @@ const CategoryList = () => {
 
   useEffect(() => {
     if (status === 'idle' || status === 'meals' || status === 'recipe') {
-      dispatch(fetchCategories());
+      dispatch(fetchGames());
     }
   }, [status, dispatch]);
 

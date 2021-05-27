@@ -6,7 +6,7 @@ import Meal from '../components/Meal';
 import {
   selectAllRecipes,
   selectAllFavourites,
-  fetchMeals,
+  fetchFavourites,
 } from '../reducers/recipeSlice';
 
 const MealList = () => {
@@ -18,7 +18,7 @@ const MealList = () => {
 
   useEffect(() => {
     if (status === 'categories') {
-      dispatch(fetchMeals());
+      dispatch(fetchFavourites());
     }
   }, [status, dispatch]);
 
