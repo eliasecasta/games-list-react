@@ -2,7 +2,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Favourite from '../components/Meal';
+import Favourite from '../components/Favourite';
 import {
   selectAllGames,
   selectAllFavourites,

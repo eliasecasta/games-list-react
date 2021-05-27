@@ -11,7 +11,7 @@ import {
 
 const GameList = () => {
   const dispatch = useDispatch();
-  const recipeCategories = useSelector(selectAllGames);
+  const gameInfoGames = useSelector(selectAllGames);
   const { status, error, filter } = useSelector((state) => state.game);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const GameList = () => {
   };
 
   let content;
-  let filteredCategories = ['All'];
+  let filteredGames = ['All'];
   let filtered;
   let filteredContent;
 
@@ -43,20 +43,18 @@ const GameList = () => {
       </div>
     );
   } else if (status === 'games') {
-    filteredCategories = recipeCategories.map((game) => game.name);
+    filteredGames = gameInfoGames.map((game) => game.name);
     filtered = (
       <GameFilter
-        filteredCategories={filteredCategories}
+        filteredGames={filteredGames}
         handleFilterChange={handleFilterChange}
       />
     );
 
     if (filter === 'All') {
-      content = recipeCategories.map((category) => (
-        <Game key={category.id} category={category} />
-      ));
+      content = gameInfoGames.map((game) => <Game key={game.id} game={game} />);
     } else {
-      filteredContent = recipeCategories.filter(
+      filteredContent = gameInfoGames.filter(
         (category) => category.name === filter,
       );
       content = filteredContent.map((category) => (

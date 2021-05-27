@@ -1,5 +1,5 @@
 import React from 'react';
-import FavouriteList from '../containers/MealList';
+import FavouriteList from '../containers/FavouriteList';
 
 function Favourites() {
   return (
