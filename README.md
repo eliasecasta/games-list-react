@@ -1,8 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -167,3 +162,4 @@ Give a :star: if you like this project!
 ## License
 
 📝 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
+=======
