@@ -72,7 +72,7 @@ This is the **games-list-react** final project where users are able to watch bas
 
 ## Demo Link
 
-[Live Demo Link](https://flavourbomb.netlify.app/)
+[Live Demo Link](https://games-list-react.netlify.app)
 
 ## Design Credits
 
