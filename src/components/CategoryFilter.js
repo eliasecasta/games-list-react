@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key, react/forbid-prop-types */
 import { PropTypes } from 'prop-types';
 
-const CategoryFilter = ({ filteredCategories, handleFilterChange }) => (
+const GameFilter = ({ filteredCategories, handleFilterChange }) => (
   <div className="text-center pb-3">
     <select
       className="form-select filter-list"
@@ -17,9 +17,9 @@ const CategoryFilter = ({ filteredCategories, handleFilterChange }) => (
   </div>
 );
 
-CategoryFilter.propTypes = {
+GameFilter.propTypes = {
   filteredCategories: PropTypes.array.isRequired,
   handleFilterChange: PropTypes.func.isRequired,
 };
 
-export default CategoryFilter;
+export default GameFilter;

@@ -1,15 +1,15 @@
 /* eslint-disable operator-linebreak */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Category from '../components/Category';
-import CategoryFilter from '../components/CategoryFilter';
+import Game from '../components/Category';
+import GameFilter from '../components/CategoryFilter';
 import {
   selectAllGames,
   fetchGames,
   changeFilter,
 } from '../reducers/recipeSlice';
 
-const CategoryList = () => {
+const GameList = () => {
   const dispatch = useDispatch();
   const recipeCategories = useSelector(selectAllGames);
   const { status, error, filter } = useSelector((state) => state.game);
@@ -45,7 +45,7 @@ const CategoryList = () => {
   } else if (status === 'games') {
     filteredCategories = recipeCategories.map((game) => game.name);
     filtered = (
-      <CategoryFilter
+      <GameFilter
         filteredCategories={filteredCategories}
         handleFilterChange={handleFilterChange}
       />
@@ -53,14 +53,14 @@ const CategoryList = () => {
 
     if (filter === 'All') {
       content = recipeCategories.map((category) => (
-        <Category key={category.id} category={category} />
+        <Game key={category.id} category={category} />
       ));
     } else {
       filteredContent = recipeCategories.filter(
         (category) => category.name === filter,
       );
       content = filteredContent.map((category) => (
-        <Category key={category.id} category={category} />
+        <Game key={category.id} category={category} />
       ));
     }
   } else {
@@ -75,4 +75,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default GameList;

@@ -1,10 +1,10 @@
 import React from 'react';
-import CategoryList from '../containers/CategoryList';
+import GameList from '../containers/CategoryList';
 
 function Home() {
   return (
     <div className="home">
-      <CategoryList />
+      <GameList />
     </div>
   );
 }

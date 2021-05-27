@@ -2,14 +2,14 @@
 /* eslint-disable implicit-arrow-linebreak */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Meal from '../components/Meal';
+import Favourite from '../components/Meal';
 import {
   selectAllGames,
   selectAllFavourites,
   fetchFavourites,
 } from '../reducers/recipeSlice';
 
-const MealList = () => {
+const FavouriteList = () => {
   const dispatch = useDispatch();
   let meals = useSelector(selectAllGames);
   const favourites = useSelector(selectAllFavourites);
@@ -36,7 +36,7 @@ const MealList = () => {
     meals = meals.filter((game) =>
       favourites.some((favourite) => game.id === favourite.game_id),
     );
-    content = meals.map((meal) => <Meal key={meal.id} meal={meal} />);
+    content = meals.map((meal) => <Favourite key={meal.id} meal={meal} />);
   } else if (status === 'failed') {
     content = <div>{error}</div>;
   }
@@ -44,4 +44,4 @@ const MealList = () => {
   return <section className="categories-list">{content}</section>;
 };
 
-export default MealList;
+export default FavouriteList;

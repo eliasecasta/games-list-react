@@ -1,12 +1,12 @@
 import React from 'react';
-import MealList from '../containers/MealList';
+import FavouriteList from '../containers/MealList';
 
-function Meals() {
+function Favourites() {
   return (
     <div className="meals">
-      <MealList />
+      <FavouriteList />
     </div>
   );
 }
 
-export default Meals;
+export default Favourites;

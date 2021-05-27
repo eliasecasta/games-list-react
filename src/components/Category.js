@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { gameFilter } from '../reducers/recipeSlice';
 
-const Category = ({ category: { name, image, price } }) => {
+const Game = ({ category: { name, image, price } }) => {
   const dispatch = useDispatch();
   let freePrice = price;
 
@@ -30,8 +30,8 @@ const Category = ({ category: { name, image, price } }) => {
   );
 };
 
-Category.propTypes = {
+Game.propTypes = {
   category: PropTypes.object.isRequired,
 };
 
-export default Category;
+export default Game;
