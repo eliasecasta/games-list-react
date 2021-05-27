@@ -143,7 +143,7 @@ exports[`NavBar component tests Matches snapshot 1`] = `
           }
         >
           <a
-            className="bm-item menu-item"
+            className="bm-item game-item"
             href="/"
             id="home"
             onClick={[Function]}
@@ -157,7 +157,7 @@ exports[`NavBar component tests Matches snapshot 1`] = `
             Home
           </a>
           <a
-            className="bm-item menu-item"
+            className="bm-item game-item"
             href="/favourites"
             id="favourites"
             onClick={[Function]}
@@ -171,7 +171,7 @@ exports[`NavBar component tests Matches snapshot 1`] = `
             Dev Favourites
           </a>
           <a
-            className="bm-item menu-item"
+            className="bm-item game-item"
             href="/login"
             id="Log In"
             onClick={[Function]}

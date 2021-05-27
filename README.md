@@ -46,7 +46,7 @@
 
 ## About The Project
 
-This is the **Flavour Bomb** Capstone project, a catalogue of recipes where users are able to navigate different recipes from a public API. Testing done with React testing library and app deployment done to Netlify.
+This is the **Flavour Bomb** Capstone project, a catalogue of gameInfo where users are able to navigate different gameInfo from a public API. Testing done with React testing library and app deployment done to Netlify.
 
 # Screenshots
 
@@ -54,7 +54,7 @@ This is the **Flavour Bomb** Capstone project, a catalogue of recipes where user
 
 ![screenshot](./src/assets/categories.png)
 
-## Meals:
+## favourites:
 
 ![screenshot2](./src/assets/favourites.png)
 
@@ -104,7 +104,7 @@ To get a local copy up and running follow these simple example steps:
 
 - Wait for the meal categories to load
 
-- Navigate the recipes!
+- Navigate the gameInfo!
 
 ## Automated Tests
 

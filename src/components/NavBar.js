@@ -12,13 +12,13 @@ const NavBar = () => {
       className="col-12 navbar d-flex justify-content-around"
     >
       <Menu>
-        <Link id="home" className="menu-item" to="/">
+        <Link id="home" className="game-item" to="/">
           Home
         </Link>
-        <Link id="favourites" className="menu-item" to="/favourites">
+        <Link id="favourites" className="game-item" to="/favourites">
           Dev Favourites
         </Link>
-        <Link id="Log In" className="menu-item" to="/login">
+        <Link id="Log In" className="game-item" to="/login">
           Log In
         </Link>
       </Menu>

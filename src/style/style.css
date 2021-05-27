@@ -8,8 +8,8 @@
 }
 
 .home,
-.recipes,
-.meals,
+.gameInfo,
+.favourites,
 .login {
   background-color: black;
 }
@@ -115,7 +115,7 @@ iframe {
   background-color: black;
 }
 
-.meal-content {
+.favourite-content {
   background-color: black;
   color: white;
   width: 100%;
@@ -204,8 +204,8 @@ a:hover {
   position: absolute;
 }
 
-.img-category-container,
-.img-meal-container {
+.img-game-container,
+.img-favourite-container {
   height: 58.4vh;
   background-repeat: no-repeat;
   background-size: contain;
@@ -213,14 +213,14 @@ a:hover {
   background-position: center;
 }
 
-.img-category-container h5,
-.img-meal-container h5 {
+.img-game-container h5,
+.img-favourite-container h5 {
   font-family: var(--main-titles-font);
   font-size: 1.3em;
 }
 
-.img-category-container,
-.img-meal-container,
+.img-game-container,
+.img-favourite-container,
 .transparent-banner,
 .transparent-game-banner {
   width: 85vw;
@@ -238,13 +238,13 @@ a:hover {
     margin-top: 30.5vh;
   }
 
-  .img-category-container {
+  .img-game-container {
     height: 35vh;
     background-size: contain;
     background-position: center;
   }
 
-  .img-meal-container {
+  .img-favourite-container {
     height: 35vh;
     background-position: center;
   }

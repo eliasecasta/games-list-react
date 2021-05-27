@@ -6,7 +6,7 @@ exports[`Meal component tests Matches snapshot 1`] = `
   onClick={[Function]}
 >
   <div
-    className="img-meal-container"
+    className="img-favourite-container"
     data-testid="meal"
     style={
       Object {

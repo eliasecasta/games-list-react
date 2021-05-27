@@ -3,7 +3,7 @@ import FavouriteList from '../containers/FavouriteList';
 
 function Favourites() {
   return (
-    <div className="meals">
+    <div className="favourites">
       <FavouriteList />
     </div>
   );

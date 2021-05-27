@@ -4,7 +4,7 @@ import GameInfo from '../components/GameInfo';
 import { selectAllGames } from '../reducers/gameSlice';
 
 const GameInfoList = () => {
-  const recipes = useSelector(selectAllGames);
+  const games = useSelector(selectAllGames);
   const { status, error } = useSelector((state) => state.game);
 
   let content;
@@ -18,14 +18,12 @@ const GameInfoList = () => {
       </div>
     );
   } else if (status === 'game-info') {
-    content = recipes.map((recipe) => (
-      <GameInfo key={recipe.id} recipe={recipe} />
-    ));
+    content = games.map((game) => <GameInfo key={game.id} game={game} />);
   } else if (status === 'failed') {
     content = <div>{error}</div>;
   }
 
-  return <section className="categories-list">{content}</section>;
+  return <section className="games-list">{content}</section>;
 };
 
 export default GameInfoList;

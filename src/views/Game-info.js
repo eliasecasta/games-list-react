@@ -3,7 +3,7 @@ import GameInfoList from '../containers/GameInfoList';
 
 function GameInfo() {
   return (
-    <div className="recipes">
+    <div className="gameInfo">
       <GameInfoList />
     </div>
   );

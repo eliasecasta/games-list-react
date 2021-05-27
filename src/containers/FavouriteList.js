@@ -41,7 +41,7 @@ const FavouriteList = () => {
     content = <div>{error}</div>;
   }
 
-  return <section className="categories-list">{content}</section>;
+  return <section className="games-list">{content}</section>;
 };
 
 export default FavouriteList;

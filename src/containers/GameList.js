@@ -55,10 +55,10 @@ const GameList = () => {
       content = gameInfoGames.map((game) => <Game key={game.id} game={game} />);
     } else {
       filteredContent = gameInfoGames.filter(
-        (category) => category.name === filter,
+        (gameInfoGame) => gameInfoGame.name === filter,
       );
-      content = filteredContent.map((category) => (
-        <Game key={category.id} category={category} />
+      content = filteredContent.map((game) => (
+        <Game key={game.id} game={game} />
       ));
     }
   } else {
@@ -68,7 +68,7 @@ const GameList = () => {
   return (
     <>
       <div>{filtered}</div>
-      <section className="categories-list">{content}</section>
+      <section className="games-list">{content}</section>
     </>
   );
 };

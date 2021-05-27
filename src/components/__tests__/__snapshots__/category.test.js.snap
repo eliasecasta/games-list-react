@@ -6,8 +6,8 @@ exports[`Meal component tests Matches snapshot 1`] = `
   onClick={[Function]}
 >
   <div
-    className="img-category-container"
-    data-testid="category"
+    className="img-game-container"
+    data-testid="game"
     style={
       Object {
         "backgroundImage": "url(https://media-cdn.tripadvisor.com/media/photo-s/18/3a/09/6c/bonefish-seafood-platter.jpg)",

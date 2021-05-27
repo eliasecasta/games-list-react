@@ -17,8 +17,8 @@ const Game = ({ game: { name, image, price } }) => {
   return (
     <Link to="/game-info" onClick={() => dispatch(gameFilter(name))}>
       <div
-        data-testid="category"
-        className="img-category-container"
+        data-testid="game"
+        className="img-game-container"
         style={{
           backgroundImage: `url(${image})`,
         }}
