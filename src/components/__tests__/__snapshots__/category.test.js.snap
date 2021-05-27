@@ -2,7 +2,7 @@
 
 exports[`Meal component tests Matches snapshot 1`] = `
 <a
-  href="/meals"
+  href="/recipe"
   onClick={[Function]}
 >
   <div
@@ -15,9 +15,14 @@ exports[`Meal component tests Matches snapshot 1`] = `
     }
   >
     <h5
-      className="transparent-banner pl-3 py-2"
+      className="transparent-banner py-2"
     >
       Seafood
+    </h5>
+    <h5
+      className="transparent-game-banner text-right py-2"
+    >
+      $ undefined
     </h5>
   </div>
 </a>

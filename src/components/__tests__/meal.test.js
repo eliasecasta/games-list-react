@@ -11,9 +11,9 @@ afterEach(() => {
 
 describe('Meal component tests', () => {
   const meal = {
-    idMeal: 1,
-    strMeal: 'Shrimp Pizza',
-    strMealThumb:
+    id: 1,
+    name: 'GTA V',
+    image:
       'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/04/pizzapepperoni0.jpg',
   };
 
@@ -43,7 +43,7 @@ describe('Meal component tests', () => {
     expect(mealElement).toBeInTheDocument();
   });
   test('Component should contain Shrimp Pizza title', () => {
-    expect(mealElement).toHaveTextContent('Shrimp Pizza');
+    expect(mealElement).toHaveTextContent('GTA V');
   });
   test('Matches snapshot', () => {
     expect(tree).toMatchSnapshot();

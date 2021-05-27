@@ -1,7 +1,9 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
 import NavBar from '../NavBar';
+import store from '../../app/store';
 
 afterEach(() => {
   cleanup();
@@ -10,17 +12,21 @@ afterEach(() => {
 describe('NavBar component tests', () => {
   // This render is for normal testing
   render(
-    <Router>
-      <NavBar />
-    </Router>,
+    <Provider store={store}>
+      <Router>
+        <NavBar />
+      </Router>
+    </Provider>,
   );
 
   // This renderer is for snapshot testing
   const tree = renderer
     .create(
-      <Router>
-        <NavBar />
-      </Router>,
+      <Provider store={store}>
+        <Router>
+          <NavBar />
+        </Router>
+      </Provider>,
     )
     .toJSON();
 
@@ -30,7 +36,9 @@ describe('NavBar component tests', () => {
     expect(navbarElement).toBeInTheDocument();
   });
   test('Component should contain flavourbomb string', () => {
-    expect(navbarElement).toHaveTextContent('flavourbomb');
+    expect(navbarElement).toHaveTextContent(
+      'Open MenuHomeDev FavouritesLog InClose MenuGames ListGuest',
+    );
   });
 
   test('Matches snapshot', () => {

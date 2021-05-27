@@ -11,11 +11,11 @@ afterEach(() => {
 
 describe('Meal component tests', () => {
   const category = {
-    idCategory: 1,
-    strCategory: 'Seafood',
-    strCategoryThumb:
+    id: 1,
+    name: 'Seafood',
+    image:
       'https://media-cdn.tripadvisor.com/media/photo-s/18/3a/09/6c/bonefish-seafood-platter.jpg',
-    strCategoryDescription: 'Seafood is delicious!',
+    description: 'Seafood is delicious!',
   };
 
   // This render is for normal testing
