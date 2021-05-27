@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Recipe from '../components/Recipe';
-import { selectAllRecipes } from '../reducers/recipeSlice';
+import { selectAllGames } from '../reducers/recipeSlice';
 
 const RecipeList = () => {
-  const recipes = useSelector(selectAllRecipes);
+  const recipes = useSelector(selectAllGames);
   const { status, error } = useSelector((state) => state.game);
 
   let content;
@@ -17,7 +17,7 @@ const RecipeList = () => {
         <div />
       </div>
     );
-  } else if (status === 'recipe') {
+  } else if (status === 'game-info') {
     content = recipes.map((recipe) => (
       <Recipe key={recipe.id} recipe={recipe} />
     ));

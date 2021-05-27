@@ -4,20 +4,20 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Meal from '../components/Meal';
 import {
-  selectAllRecipes,
+  selectAllGames,
   selectAllFavourites,
   fetchFavourites,
 } from '../reducers/recipeSlice';
 
 const MealList = () => {
   const dispatch = useDispatch();
-  let meals = useSelector(selectAllRecipes);
+  let meals = useSelector(selectAllGames);
   const favourites = useSelector(selectAllFavourites);
 
   const { status, error } = useSelector((state) => state.game);
 
   useEffect(() => {
-    if (status === 'categories') {
+    if (status === 'games') {
       dispatch(fetchFavourites());
     }
   }, [status, dispatch]);
@@ -32,7 +32,7 @@ const MealList = () => {
         <div />
       </div>
     );
-  } else if (status === 'meals') {
+  } else if (status === 'favourites') {
     meals = meals.filter((game) =>
       favourites.some((favourite) => game.id === favourite.game_id),
     );

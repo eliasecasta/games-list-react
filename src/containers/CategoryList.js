@@ -1,20 +1,25 @@
+/* eslint-disable operator-linebreak */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Category from '../components/Category';
 import CategoryFilter from '../components/CategoryFilter';
 import {
-  selectAllRecipes,
+  selectAllGames,
   fetchGames,
   changeFilter,
 } from '../reducers/recipeSlice';
 
 const CategoryList = () => {
   const dispatch = useDispatch();
-  const recipeCategories = useSelector(selectAllRecipes);
+  const recipeCategories = useSelector(selectAllGames);
   const { status, error, filter } = useSelector((state) => state.game);
 
   useEffect(() => {
-    if (status === 'idle' || status === 'meals' || status === 'recipe') {
+    if (
+      status === 'idle' ||
+      status === 'favourites' ||
+      status === 'game-info'
+    ) {
       dispatch(fetchGames());
     }
   }, [status, dispatch]);
@@ -37,7 +42,7 @@ const CategoryList = () => {
         <div />
       </div>
     );
-  } else if (status === 'categories') {
+  } else if (status === 'games') {
     filteredCategories = recipeCategories.map((game) => game.name);
     filtered = (
       <CategoryFilter

@@ -50,7 +50,7 @@ export const gameSlice = createSlice({
     gameFilter: (state, action) => {
       state.game = action.payload;
       state.value = state.value.filter((game) => game.name === state.game);
-      state.status = 'recipe';
+      state.status = 'game-info';
     },
     changeFilter: (state, action) => {
       state.filter = action.payload;
@@ -69,7 +69,7 @@ export const gameSlice = createSlice({
         userName: state.userName,
       }))
       .addCase(fetchGames.fulfilled, (state, action) => ({
-        status: 'categories',
+        status: 'games',
         value: action.payload,
         filter: state.filter,
         userName: state.userName,
@@ -88,7 +88,7 @@ export const gameSlice = createSlice({
         userName: state.userName,
       }))
       .addCase(fetchFavourites.fulfilled, (state, action) => ({
-        status: 'meals',
+        status: 'favourites',
         value: state.value,
         favourites: action.payload,
         favourite: state.favourite,
@@ -106,9 +106,7 @@ export const gameSlice = createSlice({
 export const { favouriteFilter, gameFilter, changeFilter, changeUserName } =
   gameSlice.actions;
 
-export const selectAllRecipes = (state) => state.game.value;
+export const selectAllGames = (state) => state.game.value;
 export const selectAllFavourites = (state) => state.game.favourites;
-export const selectRecipeById = (state, recipeId) =>
-  state.game.value.find((game) => game.id === recipeId);
 
 export default gameSlice.reducer;
