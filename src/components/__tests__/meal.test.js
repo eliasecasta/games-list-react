@@ -3,16 +3,16 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import store from '../../app/store';
-import Meal from '../Meal';
+import Favourite from '../Favourite';
 
 afterEach(() => {
   cleanup();
 });
 
-describe('Meal component tests', () => {
-  const meal = {
+describe('Favourite component tests', () => {
+  const game = {
     id: 1,
-    name: 'GTA V',
+    name: 'Path of Exile',
     image:
       'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/04/pizzapepperoni0.jpg',
   };
@@ -21,7 +21,7 @@ describe('Meal component tests', () => {
   render(
     <Provider store={store}>
       <Router>
-        <Meal meal={meal} />
+        <Favourite game={game} />
       </Router>
     </Provider>,
   );
@@ -31,19 +31,19 @@ describe('Meal component tests', () => {
     .create(
       <Provider store={store}>
         <Router>
-          <Meal meal={meal} />
+          <Favourite game={game} />
         </Router>
       </Provider>,
     )
     .toJSON();
 
-  const mealElement = screen.getByTestId('meal');
+  const favouriteElement = screen.getByTestId('favourite');
 
   test('Component should Render', () => {
-    expect(mealElement).toBeInTheDocument();
+    expect(favouriteElement).toBeInTheDocument();
   });
-  test('Component should contain Shrimp Pizza title', () => {
-    expect(mealElement).toHaveTextContent('GTA V');
+  test('Component should contain Path of Exile name', () => {
+    expect(favouriteElement).toHaveTextContent('Path of Exile');
   });
   test('Matches snapshot', () => {
     expect(tree).toMatchSnapshot();

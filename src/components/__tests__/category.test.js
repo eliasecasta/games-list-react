@@ -3,26 +3,26 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import store from '../../app/store';
-import Category from '../Category';
+import Game from '../Game';
 
 afterEach(() => {
   cleanup();
 });
 
-describe('Meal component tests', () => {
-  const category = {
+describe('Game component tests', () => {
+  const game = {
     id: 1,
-    name: 'Seafood',
+    name: 'GTA V',
     image:
       'https://media-cdn.tripadvisor.com/media/photo-s/18/3a/09/6c/bonefish-seafood-platter.jpg',
-    description: 'Seafood is delicious!',
+    description: 'GTA V is an action roleplay game',
   };
 
   // This render is for normal testing
   render(
     <Provider store={store}>
       <Router>
-        <Category category={category} />
+        <Game game={game} />
       </Router>
     </Provider>,
   );
@@ -32,19 +32,19 @@ describe('Meal component tests', () => {
     .create(
       <Provider store={store}>
         <Router>
-          <Category category={category} />
+          <Game game={game} />
         </Router>
       </Provider>,
     )
     .toJSON();
 
-  const categoryElement = screen.getByTestId('category');
+  const gameElement = screen.getByTestId('game');
 
   test('Component should Render', () => {
-    expect(categoryElement).toBeInTheDocument();
+    expect(gameElement).toBeInTheDocument();
   });
-  test('Component should contain Seafood title', () => {
-    expect(categoryElement).toHaveTextContent('Seafood');
+  test('Component should contain GTA V name', () => {
+    expect(gameElement).toHaveTextContent('GTA V');
   });
   test('Matches snapshot', () => {
     expect(tree).toMatchSnapshot();

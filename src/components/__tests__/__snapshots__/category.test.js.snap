@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Meal component tests Matches snapshot 1`] = `
+exports[`Game component tests Matches snapshot 1`] = `
 <a
   href="/game-info"
   onClick={[Function]}
@@ -17,7 +17,7 @@ exports[`Meal component tests Matches snapshot 1`] = `
     <h5
       className="transparent-banner py-2"
     >
-      Seafood
+      GTA V
     </h5>
     <h5
       className="transparent-game-banner text-right py-2"
