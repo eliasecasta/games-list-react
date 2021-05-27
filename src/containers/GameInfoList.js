@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Recipe from '../components/Recipe';
-import { selectAllGames } from '../reducers/recipeSlice';
+import GameInfo from '../components/GameInfo';
+import { selectAllGames } from '../reducers/gameSlice';
 
-const RecipeList = () => {
+const GameInfoList = () => {
   const recipes = useSelector(selectAllGames);
   const { status, error } = useSelector((state) => state.game);
 
@@ -19,7 +19,7 @@ const RecipeList = () => {
     );
   } else if (status === 'game-info') {
     content = recipes.map((recipe) => (
-      <Recipe key={recipe.id} recipe={recipe} />
+      <GameInfo key={recipe.id} recipe={recipe} />
     ));
   } else if (status === 'failed') {
     content = <div>{error}</div>;
@@ -28,4 +28,4 @@ const RecipeList = () => {
   return <section className="categories-list">{content}</section>;
 };
 
-export default RecipeList;
+export default GameInfoList;

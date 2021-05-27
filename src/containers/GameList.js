@@ -1,13 +1,13 @@
 /* eslint-disable operator-linebreak */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Game from '../components/Category';
-import GameFilter from '../components/CategoryFilter';
+import Game from '../components/Game';
+import GameFilter from '../components/GameFilter';
 import {
   selectAllGames,
   fetchGames,
   changeFilter,
-} from '../reducers/recipeSlice';
+} from '../reducers/gameSlice';
 
 const GameList = () => {
   const dispatch = useDispatch();

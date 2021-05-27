@@ -2,7 +2,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { gameFilter } from '../reducers/recipeSlice';
+import { gameFilter } from '../reducers/gameSlice';
 
 const Game = ({ category: { name, image, price } }) => {
   const dispatch = useDispatch();

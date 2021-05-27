@@ -1,7 +1,7 @@
 /* eslint-disable max-len, operator-linebreak, object-curly-newline, react/forbid-prop-types, jsx-a11y/anchor-is-valid */
 import { PropTypes } from 'prop-types';
 
-const Recipe = ({ recipe: { name, image, price, description } }) => {
+const GameInfo = ({ recipe: { name, image, price, description } }) => {
   let freePrice;
 
   if (price === 0) {
@@ -27,8 +27,8 @@ const Recipe = ({ recipe: { name, image, price, description } }) => {
   );
 };
 
-Recipe.propTypes = {
+GameInfo.propTypes = {
   recipe: PropTypes.object.isRequired,
 };
 
-export default Recipe;
+export default GameInfo;

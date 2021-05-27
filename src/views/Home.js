@@ -1,5 +1,5 @@
 import React from 'react';
-import GameList from '../containers/CategoryList';
+import GameList from '../containers/GameList';
 
 function Home() {
   return (

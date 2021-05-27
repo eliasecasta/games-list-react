@@ -2,7 +2,7 @@
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { gameFilter } from '../reducers/recipeSlice';
+import { gameFilter } from '../reducers/gameSlice';
 
 const Favourite = ({ meal: { name, image, price } }) => {
   const dispatch = useDispatch();

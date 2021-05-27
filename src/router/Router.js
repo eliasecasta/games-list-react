@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../views/Home';
-import Favourites from '../views/Meals';
-import Recipes from '../views/Recipes';
+import Favourites from '../views/Favourites';
+import GameInfo from '../views/Game-info';
 import Login from '../views/Login';
 import NavBar from '../components/NavBar';
 
@@ -14,7 +14,7 @@ const Router = () => (
       <Route exact path="/" component={Home} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/meals" component={Favourites} />
-      <Route exact path="/recipe" component={Recipes} />
+      <Route exact path="/recipe" component={GameInfo} />
       <Route exact path="/login" component={Login} />
     </Switch>
   </BrowserRouter>

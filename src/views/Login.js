@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { changeUserName } from '../reducers/recipeSlice';
+import { changeUserName } from '../reducers/gameSlice';
 
 function Login() {
   const dispatch = useDispatch();

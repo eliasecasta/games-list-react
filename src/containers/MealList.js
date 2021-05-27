@@ -7,7 +7,7 @@ import {
   selectAllGames,
   selectAllFavourites,
   fetchFavourites,
-} from '../reducers/recipeSlice';
+} from '../reducers/gameSlice';
 
 const FavouriteList = () => {
   const dispatch = useDispatch();
