@@ -6,7 +6,7 @@ import { changeUserName } from '../reducers/gameSlice';
 
 function Login() {
   const dispatch = useDispatch();
-  let userName = 'asd';
+  let userName;
 
   const handleSubmit = (event) => {
     event.preventDefault();

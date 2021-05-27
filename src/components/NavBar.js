@@ -15,7 +15,7 @@ const NavBar = () => {
         <Link id="home" className="menu-item" to="/">
           Home
         </Link>
-        <Link id="favourites" className="menu-item" to="/meals">
+        <Link id="favourites" className="menu-item" to="/favourites">
           Dev Favourites
         </Link>
         <Link id="Log In" className="menu-item" to="/login">

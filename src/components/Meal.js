@@ -15,7 +15,7 @@ const Favourite = ({ meal: { name, image, price } }) => {
   }
 
   return (
-    <Link to="/recipe" onClick={() => dispatch(gameFilter(name))}>
+    <Link to="/game-info" onClick={() => dispatch(gameFilter(name))}>
       <div
         data-testid="meal"
         className="img-meal-container"

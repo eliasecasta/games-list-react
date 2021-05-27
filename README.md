@@ -56,11 +56,11 @@ This is the **Flavour Bomb** Capstone project, a catalogue of recipes where user
 
 ## Meals:
 
-![screenshot2](./src/assets/meals.png)
+![screenshot2](./src/assets/favourites.png)
 
 ## Recipe:
 
-![screenshot3](./src/assets/recipes.png)
+![screenshot3](./src/assets/game-info.png)
 
 ## Demo Link
 

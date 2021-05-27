@@ -12,9 +12,10 @@ const Router = () => (
     <Switch>
       {/* This is a failsafe route */}
       <Route exact path="/" component={Home} />
+
       <Route exact path="/home" component={Home} />
-      <Route exact path="/meals" component={Favourites} />
-      <Route exact path="/recipe" component={GameInfo} />
+      <Route exact path="/favourites" component={Favourites} />
+      <Route exact path="/game-info" component={GameInfo} />
       <Route exact path="/login" component={Login} />
     </Switch>
   </BrowserRouter>

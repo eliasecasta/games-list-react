@@ -2,7 +2,7 @@
 
 exports[`Meal component tests Matches snapshot 1`] = `
 <a
-  href="/recipe"
+  href="/game-info"
   onClick={[Function]}
 >
   <div
