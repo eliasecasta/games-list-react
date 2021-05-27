@@ -25,10 +25,10 @@
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #ffffff;
+  background: #fff;
 }
 
-/* Color/shape of burger icon bars on hover*/
+/* Color/shape of burger icon bars on hover */
 .bm-burger-bars-hover {
   background: var(--main-titles-color);
 }
@@ -38,6 +38,7 @@
   height: 24px;
   width: 24px;
   left: 70%;
+
   /* top: 50%; */
 }
 
@@ -57,7 +58,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #000000;
+  background: #000;
   padding-left: 5%;
   font-size: 1.15em;
   margin-left: -40px;
