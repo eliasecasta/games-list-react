@@ -47,7 +47,7 @@ export const fetchRecipes = createAsyncThunk(
 
     try {
       const response = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${state.recipe.recipe}`,
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${state.game.recipe}`,
       );
       return response.data.meals;
     } catch (error) {
@@ -56,8 +56,8 @@ export const fetchRecipes = createAsyncThunk(
   },
 );
 
-export const foodSlice = createSlice({
-  name: 'food',
+export const gameSlice = createSlice({
+  name: 'game',
   initialState,
   reducers: {
     mealFilter: (state, action) => {
@@ -139,11 +139,11 @@ export const foodSlice = createSlice({
 });
 
 export const { mealFilter, recipeFilter, changeFilter, changeUserName } =
-  foodSlice.actions;
+  gameSlice.actions;
 
-export const selectAllRecipes = (state) => state.recipe.value;
-export const selectAllFavourites = (state) => state.recipe.favourites;
+export const selectAllRecipes = (state) => state.game.value;
+export const selectAllFavourites = (state) => state.game.favourites;
 export const selectRecipeById = (state, recipeId) =>
-  state.recipe.value.find((recipe) => recipe.id === recipeId);
+  state.game.value.find((game) => game.id === recipeId);
 
-export default foodSlice.reducer;
+export default gameSlice.reducer;

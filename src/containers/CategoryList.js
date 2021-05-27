@@ -11,7 +11,7 @@ import {
 const CategoryList = () => {
   const dispatch = useDispatch();
   const recipeCategories = useSelector(selectAllRecipes);
-  const { status, error, filter } = useSelector((state) => state.recipe);
+  const { status, error, filter } = useSelector((state) => state.game);
 
   useEffect(() => {
     if (status === 'idle' || status === 'meals' || status === 'recipe') {
@@ -38,7 +38,7 @@ const CategoryList = () => {
       </div>
     );
   } else if (status === 'categories') {
-    filteredCategories = recipeCategories.map((recipe) => recipe.name);
+    filteredCategories = recipeCategories.map((game) => game.name);
     filtered = (
       <CategoryFilter
         filteredCategories={filteredCategories}

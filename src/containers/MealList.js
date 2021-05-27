@@ -14,7 +14,7 @@ const MealList = () => {
   let meals = useSelector(selectAllRecipes);
   const favourites = useSelector(selectAllFavourites);
 
-  const { status, error } = useSelector((state) => state.recipe);
+  const { status, error } = useSelector((state) => state.game);
 
   useEffect(() => {
     if (status === 'categories') {

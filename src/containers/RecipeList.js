@@ -5,7 +5,7 @@ import { selectAllRecipes } from '../reducers/recipeSlice';
 
 const RecipeList = () => {
   const recipes = useSelector(selectAllRecipes);
-  const { status, error } = useSelector((state) => state.recipe);
+  const { status, error } = useSelector((state) => state.game);
 
   let content;
 
