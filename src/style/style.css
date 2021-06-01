@@ -37,9 +37,7 @@
 .bm-cross-button {
   height: 24px;
   width: 24px;
-  left: 70%;
-
-  /* top: 50%; */
+  left: 85%;
 }
 
 /* Color/shape of close button cross */
@@ -54,6 +52,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-menu-wrap {
   position: fixed;
   height: 100%;
+  border: 1px solid red;
+  left: 0;
 }
 
 /* General sidebar styles */
@@ -61,8 +61,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: #000;
   padding-left: 5%;
   font-size: 1.15em;
-  margin-left: -40px;
-  margin-right: 50px;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -74,6 +72,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item-list {
   color: #b8b7ad;
   padding: 0.8em;
+  margin-top: 20%;
 }
 
 /* Individual item */
