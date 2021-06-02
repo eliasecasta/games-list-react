@@ -17,7 +17,7 @@ const FavouriteList = () => {
   const { status, error } = useSelector((state) => state.game);
 
   useEffect(() => {
-    if (status === 'games') {
+    if (status === 'games' || status === 'game-info') {
       dispatch(fetchFavourites());
     }
   }, [status, dispatch]);

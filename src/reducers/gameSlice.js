@@ -13,6 +13,7 @@ const initialState = {
   game: null,
   filter: 'All',
   userName: 'Guest',
+  gameInfo: null,
 };
 
 export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
@@ -49,7 +50,7 @@ export const gameSlice = createSlice({
     },
     gameFilter: (state, action) => {
       state.game = action.payload;
-      state.value = state.value.filter((game) => game.name === state.game);
+      state.gameInfo = state.value.filter((game) => game.name === state.game);
       state.status = 'game-info';
     },
     changeFilter: (state, action) => {
@@ -65,14 +66,19 @@ export const gameSlice = createSlice({
         status: 'loading',
         value: state.value,
         favourite: state.favourite,
+        favourites: state.favourites,
         filter: state.filter,
         userName: state.userName,
+        gameInfo: state.gameInfo,
       }))
       .addCase(fetchGames.fulfilled, (state, action) => ({
         status: 'games',
         value: action.payload,
+        favourite: state.favourite,
+        favourites: state.favourites,
         filter: state.filter,
         userName: state.userName,
+        gameInfo: state.gameInfo,
       }))
       .addCase(fetchGames.rejected, (state, action) => ({
         status: 'failed',
@@ -86,6 +92,7 @@ export const gameSlice = createSlice({
         favourites: state.favourites,
         filter: 'All',
         userName: state.userName,
+        gameInfo: state.gameInfo,
       }))
       .addCase(fetchFavourites.fulfilled, (state, action) => ({
         status: 'favourites',
@@ -94,6 +101,7 @@ export const gameSlice = createSlice({
         favourite: state.favourite,
         filter: 'All',
         userName: state.userName,
+        gameInfo: state.gameInfo,
       }))
       .addCase(fetchFavourites.rejected, (state, action) => ({
         status: 'failed',
@@ -108,5 +116,6 @@ export const { favouriteFilter, gameFilter, changeFilter, changeUserName } =
 
 export const selectAllGames = (state) => state.game.value;
 export const selectAllFavourites = (state) => state.game.favourites;
+export const selectGameInfo = (state) => state.game.gameInfo;
 
 export default gameSlice.reducer;

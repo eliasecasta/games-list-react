@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import GameInfo from '../components/GameInfo';
-import { selectAllGames } from '../reducers/gameSlice';
+import { selectGameInfo } from '../reducers/gameSlice';
 
 const GameInfoList = () => {
-  const games = useSelector(selectAllGames);
+  const games = useSelector(selectGameInfo);
   const { status, error } = useSelector((state) => state.game);
 
   let content;
