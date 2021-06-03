@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { changeUserName } from '../reducers/gameSlice';
+import { changeUserName, postUserName } from '../reducers/gameSlice';
 
 function Login() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(changeUserName(userName));
+    dispatch(postUserName());
   };
 
   const handleChange = (event) => {

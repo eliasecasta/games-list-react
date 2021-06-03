@@ -18,9 +18,7 @@ const initialState = {
 
 export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
   try {
-    const response = await axios.get(
-      'https://games-list-api.herokuapp.com/games',
-    );
+    const response = await axios.get('http://127.0.0.1:3000/games');
     return response.data;
   } catch (error) {
     console.log(error);
@@ -31,8 +29,26 @@ export const fetchFavourites = createAsyncThunk(
   'games/fetchFavourites',
   async () => {
     try {
-      const response = await axios.get(
-        'https://games-list-api.herokuapp.com/favourites',
+      const response = await axios.get('http://127.0.0.1:3000/favourites');
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
+
+export const postUserName = createAsyncThunk(
+  'games/postUserName',
+  async (arg, { getState }) => {
+    const state = getState();
+
+    try {
+      const formData = new FormData();
+      formData.append('name', `${state.game.userName}`);
+
+      const response = await axios.post(
+        'http://127.0.0.1:3000/users',
+        formData,
       );
       return response.data;
     } catch (error) {
@@ -104,6 +120,29 @@ export const gameSlice = createSlice({
         gameInfo: state.gameInfo,
       }))
       .addCase(fetchFavourites.rejected, (state, action) => ({
+        status: 'failed',
+        error: action.error.message,
+        userName: state.userName,
+      }))
+      .addCase(postUserName.pending, (state) => ({
+        status: 'loading',
+        value: state.value,
+        favourite: state.favourite,
+        favourites: state.favourites,
+        filter: 'All',
+        userName: state.userName,
+        gameInfo: state.gameInfo,
+      }))
+      .addCase(postUserName.fulfilled, (state, action) => ({
+        status: 'favourites',
+        value: state.value,
+        favourites: action.payload,
+        favourite: state.favourite,
+        filter: 'All',
+        userName: state.userName,
+        gameInfo: state.gameInfo,
+      }))
+      .addCase(postUserName.rejected, (state, action) => ({
         status: 'failed',
         error: action.error.message,
         userName: state.userName,
