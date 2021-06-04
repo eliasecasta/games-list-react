@@ -18,8 +18,11 @@ const NavBar = () => {
         <Link id="favourites" className="game-item" to="/favourites">
           Dev Favourites
         </Link>
-        <Link id="Log In" className="game-item" to="/login">
-          Log In
+        <Link id="Sign In" className="game-item" to="/signin">
+          Sign In
+        </Link>
+        <Link id="Sign Up" className="game-item" to="/signup">
+          Sign Up
         </Link>
       </Menu>
       <Link to="/home">Games List</Link>

@@ -3,9 +3,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { changeUserName, postUserName } from '../reducers/gameSlice';
+import {
+  changeUserName,
+  postUserName,
+  fetchFavourites,
+} from '../reducers/gameSlice';
 
-function Login() {
+function SignUp() {
   const dispatch = useDispatch();
   let userName;
 
@@ -13,6 +17,7 @@ function Login() {
     event.preventDefault();
     dispatch(changeUserName(userName));
     dispatch(postUserName());
+    dispatch(fetchFavourites());
   };
 
   const handleChange = (event) => {
@@ -35,9 +40,9 @@ function Login() {
       />
       <br />
       <br />
-      <input className="btn btn-primary" type="submit" value="Submit" />
+      <input className="btn btn-primary" type="submit" value="Sign Up" />
     </form>
   );
 }
 
-export default Login;
+export default SignUp;

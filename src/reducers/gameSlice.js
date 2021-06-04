@@ -1,3 +1,6 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable func-names */
 /* eslint-disable object-curly-newline */
 /* eslint-disable operator-linebreak */
 /* eslint-disable max-len, no-param-reassign, consistent-return, no-console, implicit-arrow-linebreak */
@@ -27,9 +30,37 @@ export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
 
 export const fetchFavourites = createAsyncThunk(
   'games/fetchFavourites',
-  async () => {
+  async (arg, { getState }) => {
+    const state = getState();
+
+    // const formData = new FormData();
+    // formData.append('name', `${state.game.userName.toLowerCase()}`);
+
+    // console.log(formData);
+    // const config = {
+    //   method: 'get',
+    //   url: 'http://127.0.0.1:3000/favourites',
+    //   headers: {
+    //     ...data.getHeaders(),
+    //   },
+    //   data: data,
+    // };
+
+    // await axios(config)
+    //   .then(function (response) {
+    //     console.log(JSON.stringify(response.data));
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+
     try {
-      const response = await axios.get('http://127.0.0.1:3000/favourites');
+      const response = await axios.get('http://127.0.0.1:3000/favourites', {
+        params: {
+          name: state.game.userName.toLowerCase(),
+        },
+      });
+      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -44,7 +75,7 @@ export const postUserName = createAsyncThunk(
 
     try {
       const formData = new FormData();
-      formData.append('name', `${state.game.userName}`);
+      formData.append('name', `${state.game.userName.toLowerCase()}`);
 
       const response = await axios.post(
         'http://127.0.0.1:3000/users',
@@ -56,6 +87,26 @@ export const postUserName = createAsyncThunk(
     }
   },
 );
+
+// export const getFavouritse = createAsyncThunk(
+//   'games/postUserName',
+//   async (arg, { getState }) => {
+//     const state = getState();
+
+//     try {
+//       const formData = new FormData();
+//       formData.append('name', `${state.game.userName}`);
+
+//       const response = await axios.post(
+//         'http://127.0.0.1:3000/users',
+//         formData,
+//       );
+//       return response.data;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   },
+// );
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -136,10 +187,10 @@ export const gameSlice = createSlice({
       .addCase(postUserName.fulfilled, (state, action) => ({
         status: 'favourites',
         value: state.value,
-        favourites: action.payload,
+        favourites: state.favourites,
         favourite: state.favourite,
         filter: 'All',
-        userName: state.userName,
+        userName: action.payload.name,
         gameInfo: state.gameInfo,
       }))
       .addCase(postUserName.rejected, (state, action) => ({
