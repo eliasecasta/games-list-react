@@ -17,7 +17,6 @@ function SignUp() {
     event.preventDefault();
     dispatch(changeUserName(userName));
     dispatch(postUserName());
-    dispatch(fetchFavourites());
   };
 
   const handleChange = (event) => {

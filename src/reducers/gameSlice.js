@@ -219,6 +219,29 @@ export const gameSlice = createSlice({
         status: 'failed',
         error: action.error.message,
         userName: state.userName,
+      }))
+      .addCase(deleteFavourite.pending, (state) => ({
+        status: 'loading',
+        value: state.value,
+        favourite: state.favourite,
+        favourites: state.favourites,
+        filter: 'All',
+        userName: state.userName,
+        gameInfo: state.gameInfo,
+      }))
+      .addCase(deleteFavourite.fulfilled, (state, action) => ({
+        status: 'game-info',
+        value: state.value,
+        favourites: action.payload,
+        favourite: state.favourite,
+        filter: 'All',
+        userName: state.userName,
+        gameInfo: state.gameInfo,
+      }))
+      .addCase(deleteFavourite.rejected, (state, action) => ({
+        status: 'failed',
+        error: action.error.message,
+        userName: state.userName,
       }));
   },
 });

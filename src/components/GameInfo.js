@@ -22,13 +22,15 @@ const GameInfo = ({ game: { name, image, price, description } }) => {
     freePrice = `$ ${price}`;
   }
 
-  favourites.forEach((favourite) => {
-    if (favourite.name === name) {
-      favExists.push(true);
-    } else {
-      favExists.push(false);
-    }
-  });
+  if (favourites !== undefined) {
+    favourites.forEach((favourite) => {
+      if (favourite.name === name) {
+        favExists.push(true);
+      } else {
+        favExists.push(false);
+      }
+    });
+  }
 
   if (favExists.includes(true)) {
     favButton = (

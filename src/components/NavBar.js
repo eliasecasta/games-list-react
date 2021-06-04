@@ -6,6 +6,17 @@ import { slide as Menu } from 'react-burger-menu';
 
 const NavBar = () => {
   const { userName } = useSelector((state) => state.game);
+  let signInLink;
+
+  if (userName === 'Guest') {
+    signInLink = '';
+  } else {
+    signInLink = (
+      <Link id="Sign In" className="game-item" to="/signin">
+        Sign In
+      </Link>
+    );
+  }
   return (
     <nav
       data-testid="navbar"
@@ -18,9 +29,7 @@ const NavBar = () => {
         <Link id="favourites" className="game-item" to="/favourites">
           Dev Favourites
         </Link>
-        <Link id="Sign In" className="game-item" to="/signin">
-          Sign In
-        </Link>
+        {signInLink}
         <Link id="Sign Up" className="game-item" to="/signup">
           Sign Up
         </Link>
