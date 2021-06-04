@@ -135,6 +135,10 @@ iframe {
   text-align: center;
 }
 
+.gameInfo {
+  padding-bottom: 30%;
+}
+
 a,
 a:visited,
 a:hover {
