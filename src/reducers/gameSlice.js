@@ -33,33 +33,56 @@ export const fetchFavourites = createAsyncThunk(
   async (arg, { getState }) => {
     const state = getState();
 
-    // const formData = new FormData();
-    // formData.append('name', `${state.game.userName.toLowerCase()}`);
-
-    // console.log(formData);
-    // const config = {
-    //   method: 'get',
-    //   url: 'http://127.0.0.1:3000/favourites',
-    //   headers: {
-    //     ...data.getHeaders(),
-    //   },
-    //   data: data,
-    // };
-
-    // await axios(config)
-    //   .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-
     try {
       const response = await axios.get('http://127.0.0.1:3000/favourites', {
         params: {
           name: state.game.userName.toLowerCase(),
         },
       });
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
+
+export const setFavourite = createAsyncThunk(
+  'games/setFavourite',
+  async (arg, { getState }) => {
+    const state = getState();
+    console.log(state.game.gameInfo[0].id);
+
+    try {
+      const response = await axios.put(
+        `http://127.0.0.1:3000/games/${state.game.gameInfo[0].id}/favourite`,
+        {
+          type: 'favourite',
+          name: state.game.userName.toLowerCase(),
+        },
+      );
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
+
+export const deleteFavourite = createAsyncThunk(
+  'games/deleteFavourite',
+  async (arg, { getState }) => {
+    const state = getState();
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:3000/games/${state.game.gameInfo.id}/favourite`,
+        {
+          params: {
+            type: 'unfavourite',
+            name: state.game.userName.toLowerCase(),
+          },
+        },
+      );
       console.log(response);
       return response.data;
     } catch (error) {
@@ -87,26 +110,6 @@ export const postUserName = createAsyncThunk(
     }
   },
 );
-
-// export const getFavouritse = createAsyncThunk(
-//   'games/postUserName',
-//   async (arg, { getState }) => {
-//     const state = getState();
-
-//     try {
-//       const formData = new FormData();
-//       formData.append('name', `${state.game.userName}`);
-
-//       const response = await axios.post(
-//         'http://127.0.0.1:3000/users',
-//         formData,
-//       );
-//       return response.data;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   },
-// );
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -194,6 +197,29 @@ export const gameSlice = createSlice({
         gameInfo: state.gameInfo,
       }))
       .addCase(postUserName.rejected, (state, action) => ({
+        status: 'failed',
+        error: action.error.message,
+        userName: state.userName,
+      }))
+      .addCase(setFavourite.pending, (state) => ({
+        status: 'loading',
+        value: state.value,
+        favourite: state.favourite,
+        favourites: state.favourites,
+        filter: 'All',
+        userName: state.userName,
+        gameInfo: state.gameInfo,
+      }))
+      .addCase(setFavourite.fulfilled, (state, action) => ({
+        status: 'game-info',
+        value: state.value,
+        favourites: action.payload,
+        favourite: state.favourite,
+        filter: 'All',
+        userName: state.userName,
+        gameInfo: state.gameInfo,
+      }))
+      .addCase(setFavourite.rejected, (state, action) => ({
         status: 'failed',
         error: action.error.message,
         userName: state.userName,

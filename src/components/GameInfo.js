@@ -1,7 +1,11 @@
 /* eslint-disable max-len, operator-linebreak, object-curly-newline, react/forbid-prop-types, jsx-a11y/anchor-is-valid */
+import { useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { setFavourite } from '../reducers/gameSlice';
 
 const GameInfo = ({ game: { name, image, price, description } }) => {
+  const dispatch = useDispatch();
+
   let freePrice;
 
   if (price === 0) {
@@ -23,6 +27,13 @@ const GameInfo = ({ game: { name, image, price, description } }) => {
         <h5 className="transparent-game-banner text-right py-2">{freePrice}</h5>
       </div>
       <pre className="favourite-content">{description}</pre>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => dispatch(setFavourite())}
+      >
+        favourite
+      </button>
     </>
   );
 };
