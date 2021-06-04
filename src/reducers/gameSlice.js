@@ -21,7 +21,9 @@ const initialState = {
 
 export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:3000/games');
+    const response = await axios.get(
+      'https://games-list-api.herokuapp.com/games',
+    );
     return response.data;
   } catch (error) {
     console.log(error);
@@ -34,11 +36,14 @@ export const fetchFavourites = createAsyncThunk(
     const state = getState();
 
     try {
-      const response = await axios.get('http://127.0.0.1:3000/favourites', {
-        params: {
-          name: state.game.userName.toLowerCase(),
+      const response = await axios.get(
+        'https://games-list-api.herokuapp.com/favourites',
+        {
+          params: {
+            name: state.game.userName.toLowerCase(),
+          },
         },
-      });
+      );
       return response.data;
     } catch (error) {
       console.log(error);
@@ -54,7 +59,7 @@ export const setFavourite = createAsyncThunk(
 
     try {
       const response = await axios.put(
-        `http://127.0.0.1:3000/games/${state.game.gameInfo[0].id}/favourite`,
+        `https://games-list-api.herokuapp.com/games/${state.game.gameInfo[0].id}/favourite`,
         {
           type: 'favourite',
           name: state.game.userName.toLowerCase(),
@@ -74,7 +79,7 @@ export const deleteFavourite = createAsyncThunk(
     const state = getState();
     try {
       const response = await axios.put(
-        `http://127.0.0.1:3000/games/${state.game.gameInfo[0].id}/favourite`,
+        `https://games-list-api.herokuapp.com/games/${state.game.gameInfo[0].id}/favourite`,
         {
           type: 'unfavourite',
           name: state.game.userName.toLowerCase(),
@@ -97,7 +102,7 @@ export const postUserName = createAsyncThunk(
       formData.append('name', `${state.game.userName.toLowerCase()}`);
 
       const response = await axios.post(
-        'http://127.0.0.1:3000/users',
+        'https://games-list-api.herokuapp.com/users',
         formData,
       );
       return response.data;
