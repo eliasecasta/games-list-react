@@ -39,7 +39,6 @@ export const fetchFavourites = createAsyncThunk(
           name: state.game.userName.toLowerCase(),
         },
       });
-      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -81,7 +80,6 @@ export const deleteFavourite = createAsyncThunk(
           name: state.game.userName.toLowerCase(),
         },
       );
-      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);

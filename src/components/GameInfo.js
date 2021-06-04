@@ -37,7 +37,7 @@ const GameInfo = ({ game: { name, image, price, description } }) => {
         className="fav-btn btn btn-danger"
         onClick={() => dispatch(deleteFavourite())}
       >
-        unfavourite
+        Unfavourite
       </button>
     );
   } else {
@@ -47,7 +47,7 @@ const GameInfo = ({ game: { name, image, price, description } }) => {
         className="fav-btn btn btn-warning"
         onClick={() => dispatch(setFavourite())}
       >
-        favourite
+        Mark as Favourite
       </button>
     );
   }

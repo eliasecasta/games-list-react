@@ -125,6 +125,11 @@ iframe {
   padding-right: 2.5%;
 }
 
+.fav-btn {
+  display: block;
+  margin: 10% auto;
+}
+
 .games-list h3 {
   padding: 15% 5% 100vh 5%;
   text-align: center;
