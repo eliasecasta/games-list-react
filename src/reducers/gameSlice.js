@@ -74,13 +74,11 @@ export const deleteFavourite = createAsyncThunk(
   async (arg, { getState }) => {
     const state = getState();
     try {
-      const response = await axios.get(
-        `http://127.0.0.1:3000/games/${state.game.gameInfo.id}/favourite`,
+      const response = await axios.put(
+        `http://127.0.0.1:3000/games/${state.game.gameInfo[0].id}/favourite`,
         {
-          params: {
-            type: 'unfavourite',
-            name: state.game.userName.toLowerCase(),
-          },
+          type: 'unfavourite',
+          name: state.game.userName.toLowerCase(),
         },
       );
       console.log(response);

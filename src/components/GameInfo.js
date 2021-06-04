@@ -1,17 +1,55 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len, operator-linebreak, object-curly-newline, react/forbid-prop-types, jsx-a11y/anchor-is-valid */
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { setFavourite } from '../reducers/gameSlice';
+import {
+  setFavourite,
+  deleteFavourite,
+  selectAllFavourites,
+} from '../reducers/gameSlice';
 
 const GameInfo = ({ game: { name, image, price, description } }) => {
   const dispatch = useDispatch();
+  const favourites = useSelector(selectAllFavourites);
 
   let freePrice;
+  let favButton;
+  const favExists = [];
 
   if (price === 0) {
     freePrice = 'Free!';
   } else {
     freePrice = `$ ${price}`;
+  }
+
+  favourites.forEach((favourite) => {
+    if (favourite.name === name) {
+      favExists.push(true);
+    } else {
+      favExists.push(false);
+    }
+  });
+
+  if (favExists.includes(true)) {
+    favButton = (
+      <button
+        type="button"
+        className="fav-btn btn btn-danger"
+        onClick={() => dispatch(deleteFavourite())}
+      >
+        unfavourite
+      </button>
+    );
+  } else {
+    favButton = (
+      <button
+        type="button"
+        className="fav-btn btn btn-warning"
+        onClick={() => dispatch(setFavourite())}
+      >
+        favourite
+      </button>
+    );
   }
 
   return (
@@ -27,13 +65,7 @@ const GameInfo = ({ game: { name, image, price, description } }) => {
         <h5 className="transparent-game-banner text-right py-2">{freePrice}</h5>
       </div>
       <pre className="favourite-content">{description}</pre>
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => dispatch(setFavourite())}
-      >
-        favourite
-      </button>
+      {favButton}
     </>
   );
 };
