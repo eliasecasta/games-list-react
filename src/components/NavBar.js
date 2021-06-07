@@ -1,19 +1,39 @@
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
+import { signOut } from '../reducers/gameSlice';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+
   const { userName } = useSelector((state) => state.game);
   let signInLink;
+  let signOutLink;
+  let signUpLink;
 
   if (userName === 'Guest') {
-    signInLink = '';
-  } else {
+    signOutLink = '';
     signInLink = (
       <Link id="Sign In" className="game-item" to="/signin">
         Sign In
+      </Link>
+    );
+    signUpLink = (
+      <Link id="Sign Up" className="game-item" to="/signup">
+        Sign Up
+      </Link>
+    );
+  } else {
+    signInLink = (
+      <Link
+        id="Sign Out"
+        className="game-item"
+        onClick={() => dispatch(() => dispatch(signOut()))}
+        to="/"
+      >
+        Sign Out
       </Link>
     );
   }
@@ -30,9 +50,8 @@ const NavBar = () => {
           Dev Favourites
         </Link>
         {signInLink}
-        <Link id="Sign Up" className="game-item" to="/signup">
-          Sign Up
-        </Link>
+        {signUpLink}
+        {signOutLink}
       </Menu>
       <Link to="/home">Games List</Link>
       <h5 className="navbar-username">{userName}</h5>

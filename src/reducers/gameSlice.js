@@ -131,6 +131,9 @@ export const gameSlice = createSlice({
     changeUserName: (state, action) => {
       state.userName = action.payload;
     },
+    signOut: (state) => {
+      state.userName = 'Guest';
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -256,8 +259,13 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { favouriteFilter, gameFilter, changeFilter, changeUserName } =
-  gameSlice.actions;
+export const {
+  favouriteFilter,
+  gameFilter,
+  changeFilter,
+  changeUserName,
+  signOut,
+} = gameSlice.actions;
 
 export const selectAllGames = (state) => state.game.value;
 export const selectAllFavourites = (state) => state.game.favourites;

@@ -19,6 +19,7 @@ const Router = () => (
       <Route exact path="/game-info" component={GameInfo} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/signout" />
     </Switch>
   </BrowserRouter>
 );
