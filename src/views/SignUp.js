@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   changeUserName,
   postUserName,
@@ -11,7 +11,10 @@ import {
 
 function SignUp() {
   const dispatch = useDispatch();
+  const { status, error } = useSelector((state) => state.game);
+
   let userName;
+  let signUpError;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,13 +26,18 @@ function SignUp() {
     userName = event.target.value;
   };
 
+  if (status === 'failed') {
+    signUpError = error;
+  }
+
   return (
     <form
       className="username-form text-center pt-5"
       onSubmit={(event) => handleSubmit(event)}
     >
       <h4>Username:</h4>
-      <br />
+      <div className="errorMessage mb-2 text-danger">{signUpError}</div>
+
       <input
         type="text"
         id="fname"

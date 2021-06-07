@@ -16,6 +16,7 @@ const GameList = () => {
 
   useEffect(() => {
     if (
+      status === 'failed' ||
       status === 'idle' ||
       status === 'favourites' ||
       status === 'game-info'
