@@ -9,10 +9,8 @@ import { changeUserName, postUserName } from '../reducers/gameSlice';
 function SignUp() {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const { status, error } = useSelector((state) => state.game);
 
   let userName;
-  // let signUpError;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,10 +22,6 @@ function SignUp() {
   const handleChange = (event) => {
     userName = event.target.value;
   };
-
-  // if (status === 'failed') {
-  //   signUpError = error;
-  // }
 
   return (
     <form

@@ -3,17 +3,21 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import userNotFound from '../handlers/userNotFound';
 import { changeUserName, fetchFavourites } from '../reducers/gameSlice';
 
 function SignIn() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   let userName;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(changeUserName(userName));
     dispatch(fetchFavourites());
+    history.push('/');
   };
 
   const handleChange = (event) => {
