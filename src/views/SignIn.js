@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import userNotFound from '../handlers/userNotFound';
 import { changeUserName, fetchFavourites } from '../reducers/gameSlice';
 
 function SignIn() {
@@ -26,6 +27,8 @@ function SignIn() {
     >
       <h4>Username:</h4>
       <br />
+      {userNotFound()}
+
       <input
         type="text"
         id="fname"

@@ -39,9 +39,11 @@ export const fetchFavourites = createAsyncThunk(
           name: state.game.userName.toLowerCase(),
         },
       });
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
+      throw error;
     }
   },
 );
@@ -100,6 +102,9 @@ export const postUserName = createAsyncThunk(
         'http://127.0.0.1:3000/users',
         formData,
       );
+      if (response.status === 404) {
+        return ErrorEvent;
+      }
       return response.data;
     } catch (error) {
       state.game.userName = 'guest';
@@ -170,10 +175,12 @@ export const gameSlice = createSlice({
         userName: state.userName,
         gameInfo: state.gameInfo,
       }))
-      .addCase(fetchFavourites.rejected, (state, action) => ({
+      .addCase(fetchFavourites.rejected, (state) => ({
         status: 'failed',
-        error: action.error.message,
-        userName: state.userName,
+        error: 'Username does not exist.',
+        userName: 'Guest',
+        value: state.value,
+        filter: state.filter,
       }))
       .addCase(postUserName.pending, (state) => ({
         status: 'loading',

@@ -30,7 +30,7 @@ const FavouriteList = () => {
         <div />
       </div>
     );
-  } else if (status === 'favourites') {
+  } else if (status === 'favourites' || status === 'failed') {
     // games = games.filter((game) =>
     //   favourites.some((favourite) => game.id === favourite.game_id),
     // );

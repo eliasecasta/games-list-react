@@ -1,20 +1,16 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  changeUserName,
-  postUserName,
-  fetchFavourites,
-} from '../reducers/gameSlice';
+import { useDispatch } from 'react-redux';
+import userNotFound from '../handlers/userNotFound';
+import { changeUserName, postUserName } from '../reducers/gameSlice';
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { status, error } = useSelector((state) => state.game);
+  // const { status, error } = useSelector((state) => state.game);
 
   let userName;
-  let signUpError;
+  // let signUpError;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,9 +22,9 @@ function SignUp() {
     userName = event.target.value;
   };
 
-  if (status === 'failed') {
-    signUpError = error;
-  }
+  // if (status === 'failed') {
+  //   signUpError = error;
+  // }
 
   return (
     <form
@@ -36,8 +32,7 @@ function SignUp() {
       onSubmit={(event) => handleSubmit(event)}
     >
       <h4>Username:</h4>
-      <div className="errorMessage mb-2 text-danger">{signUpError}</div>
-
+      {userNotFound()}
       <input
         type="text"
         id="fname"
