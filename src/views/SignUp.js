@@ -2,11 +2,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import userNotFound from '../handlers/userNotFound';
 import { changeUserName, postUserName } from '../reducers/gameSlice';
 
 function SignUp() {
   const dispatch = useDispatch();
+  const history = useHistory();
   // const { status, error } = useSelector((state) => state.game);
 
   let userName;
@@ -16,6 +18,7 @@ function SignUp() {
     event.preventDefault();
     dispatch(changeUserName(userName));
     dispatch(postUserName());
+    history.push('/');
   };
 
   const handleChange = (event) => {
