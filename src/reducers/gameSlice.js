@@ -52,17 +52,17 @@ export const setFavourite = createAsyncThunk(
   'games/setFavourite',
   async (arg, { getState }) => {
     const state = getState();
-    console.log(state.game.gameInfo[0].id);
 
     try {
-      const response = await axios.put(
-        `http://127.0.0.1:3000/games/${state.game.gameInfo[0].id}/favourite`,
-        {
-          type: 'favourite',
-          name: state.game.userName.toLowerCase(),
-        },
+      const formData = new FormData();
+      formData.append('type', 'favourite');
+      formData.append('name', `${state.game.userName.toLowerCase()}`);
+      formData.append('game_id', `${state.game.gameInfo[0].id}`);
+
+      const response = await axios.post(
+        'http://127.0.0.1:3000/favourites',
+        formData,
       );
-      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -74,14 +74,18 @@ export const deleteFavourite = createAsyncThunk(
   'games/deleteFavourite',
   async (arg, { getState }) => {
     const state = getState();
+
     try {
-      const response = await axios.put(
-        `http://127.0.0.1:3000/games/${state.game.gameInfo[0].id}/favourite`,
-        {
-          type: 'unfavourite',
-          name: state.game.userName.toLowerCase(),
-        },
+      const formData = new FormData();
+      formData.append('type', 'unfavourite');
+      formData.append('name', `${state.game.userName.toLowerCase()}`);
+      formData.append('game_id', `${state.game.gameInfo[0].id}`);
+
+      const response = await axios.post(
+        'http://127.0.0.1:3000/favourites',
+        formData,
       );
+
       return response.data;
     } catch (error) {
       console.log(error);
