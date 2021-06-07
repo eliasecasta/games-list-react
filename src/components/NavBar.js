@@ -42,7 +42,7 @@ const NavBar = () => {
       data-testid="navbar"
       className="col-12 navbar d-flex justify-content-around"
     >
-      <Menu>
+      <Menu collapseOnSelect>
         <Link id="home" className="game-item" to="/">
           Home
         </Link>
