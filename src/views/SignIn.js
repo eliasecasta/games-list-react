@@ -3,26 +3,22 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import userNotFound from '../handlers/userNotFound';
 import { changeUserName } from '../reducers/gameSlice';
 import { fetchFavourites } from '../services/favouriteCalls';
 
 function SignIn() {
   const dispatch = useDispatch();
-  const history = useHistory();
-
-  let userName;
+  let userNameLocal;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(changeUserName(userName));
+    dispatch(changeUserName(userNameLocal));
     dispatch(fetchFavourites());
-    history.push('/');
   };
 
   const handleChange = (event) => {
-    userName = event.target.value;
+    userNameLocal = event.target.value;
   };
 
   return (
