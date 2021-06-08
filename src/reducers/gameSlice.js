@@ -6,7 +6,6 @@
 /* eslint-disable max-len, no-param-reassign, consistent-return, no-console, implicit-arrow-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { fetchGames } from '../services/gameCalls';
 import { setFavourite, deleteFavourite } from '../services/favouriteCalls';
 import { postUserName } from '../services/userCalls';
 
@@ -24,7 +23,7 @@ const initialState = {
 
 export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:3000/games');
+    const response = await axios.get('https://games-list-api.herokuapp.com/games');
     return response.data;
   } catch (error) {
     console.log(error);
@@ -37,7 +36,7 @@ export const fetchFavourites = createAsyncThunk(
     const state = getState();
 
     try {
-      const response = await axios.get('http://127.0.0.1:3000/favourites', {
+      const response = await axios.get('https://games-list-api.herokuapp.com/favourites', {
         params: {
           name: state.game.userName.toLowerCase(),
         },

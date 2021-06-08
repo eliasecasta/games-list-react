@@ -13,7 +13,7 @@ export const postUserName = createAsyncThunk(
       formData.append('name', `${state.game.userName.toLowerCase()}`);
 
       const response = await axios.post(
-        'http://127.0.0.1:3000/users',
+        'https://games-list-api.herokuapp.com/users',
         formData,
       );
       if (response.status === 404) {
