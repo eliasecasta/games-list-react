@@ -4,8 +4,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import userNotFound from '../handlers/userNotFound';
-import { changeUserName } from '../reducers/gameSlice';
-import { fetchFavourites } from '../services/favouriteCalls';
+import { changeUserName, fetchFavourites } from '../reducers/gameSlice';
 
 function SignIn() {
   const dispatch = useDispatch();

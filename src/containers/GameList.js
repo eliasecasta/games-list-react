@@ -3,8 +3,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Game from '../components/Game';
 import GameFilter from '../components/GameFilter';
-import { selectAllGames, changeFilter } from '../reducers/gameSlice';
-import { fetchGames } from '../services/gameCalls';
+import {
+  selectAllGames,
+  changeFilter,
+  fetchGames,
+} from '../reducers/gameSlice';
 
 const GameList = () => {
   const dispatch = useDispatch();

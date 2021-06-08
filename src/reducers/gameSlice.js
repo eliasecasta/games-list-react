@@ -4,13 +4,10 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable operator-linebreak */
 /* eslint-disable max-len, no-param-reassign, consistent-return, no-console, implicit-arrow-linebreak */
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchGames } from '../services/gameCalls';
-import {
-  fetchFavourites,
-  setFavourite,
-  deleteFavourite,
-} from '../services/favouriteCalls';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+// import { fetchGames } from '../services/gameCalls';
+import { setFavourite, deleteFavourite } from '../services/favouriteCalls';
 import { postUserName } from '../services/userCalls';
 
 const initialState = {
@@ -24,6 +21,34 @@ const initialState = {
   userName: 'Guest',
   gameInfo: null,
 };
+
+export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:3000/games');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export const fetchFavourites = createAsyncThunk(
+  'games/fetchFavourites',
+  async (arg, { getState }) => {
+    const state = getState();
+
+    try {
+      const response = await axios.get('http://127.0.0.1:3000/favourites', {
+        params: {
+          name: state.game.userName.toLowerCase(),
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+);
 
 export const gameSlice = createSlice({
   name: 'game',
