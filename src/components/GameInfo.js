@@ -2,11 +2,8 @@
 /* eslint-disable max-len, operator-linebreak, object-curly-newline, react/forbid-prop-types, jsx-a11y/anchor-is-valid */
 import { useSelector, useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import {
-  setFavourite,
-  deleteFavourite,
-  selectAllFavourites,
-} from '../reducers/gameSlice';
+import { setFavourite, deleteFavourite } from '../services/favouriteCalls';
+import { selectAllFavourites } from '../reducers/gameSlice';
 
 const GameInfo = ({ game: { name, image, price, description } }) => {
   const dispatch = useDispatch();

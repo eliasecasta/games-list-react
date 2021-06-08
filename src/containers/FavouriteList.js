@@ -4,7 +4,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Favourite from '../components/Favourite';
-import { selectAllFavourites, fetchFavourites } from '../reducers/gameSlice';
+import { selectAllFavourites } from '../reducers/gameSlice';
+import { fetchFavourites } from '../services/favouriteCalls';
 
 const FavouriteList = () => {
   const dispatch = useDispatch();

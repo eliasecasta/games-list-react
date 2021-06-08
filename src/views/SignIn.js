@@ -5,7 +5,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import userNotFound from '../handlers/userNotFound';
-import { changeUserName, fetchFavourites } from '../reducers/gameSlice';
+import { changeUserName } from '../reducers/gameSlice';
+import { fetchFavourites } from '../services/favouriteCalls';
 
 function SignIn() {
   const dispatch = useDispatch();

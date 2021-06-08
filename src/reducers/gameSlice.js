@@ -4,8 +4,14 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable operator-linebreak */
 /* eslint-disable max-len, no-param-reassign, consistent-return, no-console, implicit-arrow-linebreak */
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchGames } from '../services/gameCalls';
+import {
+  fetchFavourites,
+  setFavourite,
+  deleteFavourite,
+} from '../services/favouriteCalls';
+import { postUserName } from '../services/userCalls';
 
 const initialState = {
   value: [],
@@ -18,108 +24,6 @@ const initialState = {
   userName: 'Guest',
   gameInfo: null,
 };
-
-export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
-  try {
-    const response = await axios.get(
-      'https://games-list-api.herokuapp.com/games',
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-export const fetchFavourites = createAsyncThunk(
-  'games/fetchFavourites',
-  async (arg, { getState }) => {
-    const state = getState();
-
-    try {
-      const response = await axios.get(
-        'https://games-list-api.herokuapp.com/favourites',
-        {
-          params: {
-            name: state.game.userName.toLowerCase(),
-          },
-        },
-      );
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  },
-);
-
-export const setFavourite = createAsyncThunk(
-  'games/setFavourite',
-  async (arg, { getState }) => {
-    const state = getState();
-
-    try {
-      const formData = new FormData();
-      formData.append('type', 'favourite');
-      formData.append('name', `${state.game.userName.toLowerCase()}`);
-      formData.append('game_id', `${state.game.gameInfo[0].id}`);
-
-      const response = await axios.post(
-        'https://games-list-api.herokuapp.com/favourites',
-        formData,
-      );
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-  },
-);
-
-export const deleteFavourite = createAsyncThunk(
-  'games/deleteFavourite',
-  async (arg, { getState }) => {
-    const state = getState();
-
-    try {
-      const formData = new FormData();
-      formData.append('type', 'unfavourite');
-      formData.append('name', `${state.game.userName.toLowerCase()}`);
-      formData.append('game_id', `${state.game.gameInfo[0].id}`);
-
-      const response = await axios.post(
-        'https://games-list-api.herokuapp.com/favourites',
-        formData,
-      );
-
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-  },
-);
-
-export const postUserName = createAsyncThunk(
-  'games/postUserName',
-  async (arg, { getState }) => {
-    const state = getState();
-
-    try {
-      const formData = new FormData();
-      formData.append('name', `${state.game.userName.toLowerCase()}`);
-
-      const response = await axios.post(
-        'https://games-list-api.herokuapp.com/users',
-        formData,
-      );
-      if (response.status === 404) {
-        return ErrorEvent;
-      }
-      return response.data;
-    } catch (error) {
-      state.game.userName = 'guest';
-      console.log(error);
-    }
-  },
-);
 
 export const gameSlice = createSlice({
   name: 'game',
@@ -197,7 +101,6 @@ export const gameSlice = createSlice({
         status: 'loading',
         value: state.value,
         favourite: state.favourite,
-        favourites: state.favourites,
         filter: 'All',
         userName: state.userName,
         gameInfo: state.gameInfo,
@@ -206,7 +109,6 @@ export const gameSlice = createSlice({
         status: 'favourites',
         value: state.value,
         favourites: state.favourites,
-        favourite: state.favourite,
         filter: 'All',
         userName: action.payload.name,
         gameInfo: state.gameInfo,

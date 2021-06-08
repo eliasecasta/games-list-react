@@ -4,7 +4,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import userNotFound from '../handlers/userNotFound';
-import { changeUserName, postUserName } from '../reducers/gameSlice';
+import { changeUserName } from '../reducers/gameSlice';
+import { postUserName } from '../services/userCalls';
 
 function SignUp() {
   const dispatch = useDispatch();
