@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game component tests Matches snapshot 1`] = `
+<a
+  href="/game-info"
+  onClick={[Function]}
+>
+  <div
+    className="img-game-container"
+    data-testid="game"
+    style={
+      Object {
+        "backgroundImage": "url(https://media-cdn.tripadvisor.com/media/photo-s/18/3a/09/6c/bonefish-seafood-platter.jpg)",
+      }
+    }
+  >
+    <h5
+      className="transparent-banner py-2"
+    >
+      GTA V
+    </h5>
+    <h5
+      className="transparent-game-banner text-right py-2"
+    >
+      $ undefined
+    </h5>
+  </div>
+</a>
+`;

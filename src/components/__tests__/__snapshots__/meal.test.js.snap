@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Favourite component tests Matches snapshot 1`] = `
+<a
+  href="/game-info"
+  onClick={[Function]}
+>
+  <div
+    className="img-favourite-container"
+    data-testid="favourite"
+    style={
+      Object {
+        "backgroundImage": "url(https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/04/pizzapepperoni0.jpg)",
+      }
+    }
+  >
+    <h5
+      className="transparent-banner py-2"
+    >
+      Path of Exile
+    </h5>
+    <h5
+      className="transparent-game-banner text-right py-2"
+    >
+      $ undefined
+    </h5>
+  </div>
+</a>
+`;
+
+exports[`Meal component tests Matches snapshot 1`] = `
+<a
+  href="/game-info"
+  onClick={[Function]}
+>
+  <div
+    className="img-favourite-container"
+    data-testid="favourite"
+    style={
+      Object {
+        "backgroundImage": "url(https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/04/pizzapepperoni0.jpg)",
+      }
+    }
+  >
+    <h5
+      className="transparent-banner py-2"
+    >
+      Path of Exile
+    </h5>
+    <h5
+      className="transparent-game-banner text-right py-2"
+    >
+      $ undefined
+    </h5>
+  </div>
+</a>
+`;

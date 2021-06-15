@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+:root {
+  --main-titles-font: 'Architects Daughter', cursive;
+  --main-titles-color: rgb(255, 0, 0);
+
+  background-color: black;
+}
+
+.home,
+.gameInfo,
+.favourites,
+.login {
+  background-color: black;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 8%;
+  height: 3.5%;
+  left: 5%;
+  top: 1.5%;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #fff;
+}
+
+/* Color/shape of burger icon bars on hover */
+.bm-burger-bars-hover {
+  background: var(--main-titles-color);
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+  left: 85%;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  border: 1px solid red;
+  left: 0;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #000;
+  padding-left: 5%;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+  padding-top: 20%;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.navbar-username {
+  color: white;
+}
+
+.username-form {
+  background: black;
+  color: white;
+}
+
+.filter-list {
+  background-color: black;
+  color: white;
+}
+
+pre {
+  white-space: pre-wrap; /* Since CSS 2.1 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+iframe {
+  width: 100vw;
+  height: auto;
+  border: none;
+  padding-top: 4%;
+}
+
+.youtube-vid-container {
+  background-color: black;
+}
+
+.favourite-content {
+  background-color: black;
+  color: white;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 2.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+.fav-btn {
+  display: block;
+  margin: 10% auto;
+}
+
+.games-list h3 {
+  padding: 15% 5% 100vh 5%;
+  text-align: center;
+}
+
+.gameInfo {
+  padding-bottom: 30%;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar a {
+  color: var(--main-titles-color);
+  font-family: var(--main-titles-font);
+  font-size: 1.8em;
+}
+
+.lds-facebook {
+  display: inline-block;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-left: 40vw;
+  margin-top: 60vw;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: black;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  /* stylelint-disable-next-line csstree/validator */
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  /* stylelint-disable-next-line csstree/validator */
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+.transparent-banner {
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  position: absolute;
+}
+
+.transparent-game-banner {
+  color: white;
+  position: absolute;
+}
+
+.img-game-container,
+.img-favourite-container {
+  height: 58.4vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: lightgrey;
+  background-position: center;
+}
+
+.img-game-container h5,
+.img-favourite-container h5 {
+  font-family: var(--main-titles-font);
+  font-size: 1.3em;
+}
+
+.img-game-container,
+.img-favourite-container,
+.transparent-banner,
+.transparent-game-banner {
+  width: 85vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.transparent-banner,
+.transparent-game-banner {
+  margin-top: 53.8vh;
+}
+
+@media only screen and (min-width: 768px) {
+  .transparent-banner {
+    margin-top: 30.5vh;
+  }
+
+  .img-game-container {
+    height: 35vh;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .img-favourite-container {
+    height: 35vh;
+    background-position: center;
+  }
+
+  iframe {
+    height: 40vh;
+  }
+}
